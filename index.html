@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Bois | Votre fournisseur de bois de chauffage en France</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #5D4037; /* Brun profond */
+            --secondary: #795548; /* Brun chaud */
+            --accent: #E64A19; /* Orange terracotta */
+            --light: #EFEBE9; /* Beige très clair */
+            --dark: #3E2723; /* Brun foncé */
+            --wood: #8D6E63; /* Teinte bois */
+            --fire: #FF5722; /* Orange feu */
+        }
+
+        body {
+            background-color: #f9f5f0;
+            color: #333;
+            padding-bottom: 70px; /* Espace pour le menu fixe en bas */
+            background-image: url('images/bois-densifié-5.png');
+            background-blend-mode: overlay;
+            background-color: #fdfaf7;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: #FFD700;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .contact-badge {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-badge:hover {
+            transform: scale(1.05);
+            background-color: #d84315;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('images/buche de jour/buche_de_jour_5.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--fire);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .btn-details {
+            background-color: var(--wood);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-details:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* SECTIONS COMMUNES */
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* PRODUITS */
+        .products {
+            background-color: white;
+            background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('images/bois-densifié-5.png');
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid #e0d6c9;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 20px;
+            background: #fcfaf7;
+        }
+
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .product-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            min-height: 80px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: var(--dark);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        /* POURQUOI NOUS CHOISIR */
+        .why-us {
+            background-color: var(--light);
+            background-image: linear-gradient(rgba(239, 235, 233, 0.9), rgba(239, 235, 233, 0.9)), url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e0d6c9;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* TEMOIGNAGES */
+        .testimonials {
+            background-color: white;
+            background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 200px;
+            border: 1px solid #e0d6c9;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .testimonials-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonials-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 30px;
+            background: var(--light);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            border: 1px solid #e0d6c9;
+        }
+
+        .testimonial-card .rating {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .testimonial-card .client {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: var(--accent);
+        }
+
+        .review-btn {
+            display: block;
+            margin: 50px auto 0;
+            padding: 15px 40px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .review-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--wood);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .modal h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .rating-input {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .rating-input i {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .rating-input i:hover,
+        .rating-input i.active {
+            color: #FFD700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input, 
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+        }
+
+        .submit-review {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-review:hover {
+            background-color: #b34a4a;
+        }
+
+        /* CONTACT */
+        .contact {
+            background-color: var(--light);
+            background-image: linear-gradient(rgba(239, 235, 233, 0.9), rgba(239, 235, 233, 0.9)), url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0d6c9;
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            min-width: 40px;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .contact-map {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 350px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            text-align: center;
+            padding: 20px;
+            border: 1px solid var(--wood);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            color: white;
+            padding: 50px 5% 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 5px 0;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* MENU FIXE EN BAS */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            z-index: 100;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 8px 20px;
+            border-radius: 30px;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(139, 69, 19, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* NOTIFICATION */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background-color: #4CAF50;
+        }
+
+        .notification.error {
+            background-color: #f44336;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .bottom-nav span {
+                display: none;
+            }
+            
+            .bottom-nav {
+                padding: 10px 0;
+            }
+            
+            .nav-btn {
+                padding: 8px 15px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+            
+            .contact-badge span {
+                display: none;
+            }
+        }
+
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-fire-alt logo-icon"></i>
+            <h1>Express Bois</h1>
+        </div>
+        <!--
+        <div class="contact-badge">
+            <i class="fas fa-phone-alt"></i>
+            <span>+33 756-87-42-15</span>
+        </div>
+        -->
+        <a href="tel:+33756874215" class="contact-badge" style="text-decoration: none; color: inherit; display: inherit;">
+            <i class="fas fa-phone-alt"></i>
+            <span>+33 756-87-42-15</span>
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Votre confort, notre priorité</h2>
+        <p>Bois de chauffage de qualité supérieure, livré directement chez vous partout en France</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" id="open-delivery">Vérifiez la livraison</button>
+            <button class="btn btn-secondary" id="open-calculator">Calculer mes besoins</button>
+        </div>
+    </section>
+
+    <!-- Section Produits -->
+    <section class="products">
+        <div class="section-title">
+            <h2>Nos Produits</h2>
+            <p>Découvrez notre gamme complète de bois de chauffage</p>
+        </div>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/granulés/granulés.png');"></div>
+                <div class="product-info">
+                    <h3>Granulés de Bois Premium</h3>
+                    <p>100% résineux français, certification ENplus A1, faible taux de cendres (<0,5%).</p>
+                    <div class="product-price">5,20€ / sac 15kg</div>
+                    <a href="details-granules-premium.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ nuit/buche_de_nuit.jfif');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Nuit - Chêne/Hêtre</h3>
+                    <p>Combustion lente 8-10h, bois dur séché 18 mois, idéal pour chauffage nocturne.</p>
+                    <div class="product-price">89€ / stère</div>
+                    <a href="details-buches-nuit.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/bois\ fendu/bois_fendu_4.jpg');"></div>
+                <div class="product-info">
+                    <h3>Bois Fendu - Mélange Feuillus</h3>
+                    <p>Chêne, Hêtre, Frêne et Charme. Séché naturellement 18 mois, prêt à l'emploi.</p>
+                    <div class="product-price">79€ / stère</div>
+                    <a href="details-bois-fendu.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/bois_densifié/bois-densifié.webp');"></div>
+                <div class="product-info">
+                    <h3>Bois Compressé</h3>
+                    <p>100% sciure de feuillus compressée, haute densité énergétique, combustion 2-3h par bûche.</p>
+                    <div class="product-price">7,20€ / pack 10 bûches</div>
+                    <a href="details-bois-compresse.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <!-- Deux cartes supplémentaires -->
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ jour/buche_de_jour_2.png');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Jour - Hêtre/Frêne</h3>
+                    <p>Combustion rapide et intense, montée en température rapide, bois G1.</p>
+                    <div class="product-price">82€ / stère</div>
+                    <a href="details-buches-jour.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ nuit/buche_de_nuit_1.png');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Nuit - Charme</h3>
+                    <p>Charme pur, combustion ultra-lente 10-12h, bois dur premium pour chauffage nocturne prolongé.</p>
+                    <div class="product-price">92€ / stère</div>
+                    <a href="details-buches-nuit-charme.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ jour/buche_jour_chene_charme.jfif');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Jour - Chêne/Charme</h3>
+                    <p>Mélange chêne et charme, montée rapide en température, combustion intense et durable.</p>
+                    <div class="product-price">86€ / stère</div>
+                    <a href="details-buches-jour-chene-charme.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/accessoires/accessoire.png');"></div>
+                <div class="product-info">
+                    <h3>Accessoires</h3>
+                    <p>Optez pour des équipements de qualité pour votre confort et votre autonomie.</p>
+                    <div class="product-price">Rapport Qualité-Prix imbattable</div>
+                    <a href="accessoires.html" class="btn-details">Voir Catalogue</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Pourquoi Nous Choisir -->
+    <section class="why-us">
+        <div class="section-title">
+            <h2>Pourquoi Nous Choisir</h2>
+            <p>L'excellence du service et la qualité du produit</p>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-truck feature-icon"></i>
+                <h3>Livraison Rapide</h3>
+                <p>Livraison sous 48h partout en France par nos transporteurs partenaires</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-tree feature-icon"></i>
+                <h3>Bois Durable</h3>
+                <p>Bois issu de forêts gérées durablement, certifié PEFC</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-euro-sign feature-icon"></i>
+                <h3>Prix Compétitifs</h3>
+                <p>Les meilleurs prix du marché sans compromis sur la qualité</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-fire feature-icon"></i>
+                <h3>Haute Performance</h3>
+                <p>Pouvoir calorifique supérieur pour un meilleur rendement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Ils Nous Font Confiance</h2>
+            <p>Découvrez ce que disent nos clients satisfaits</p>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">Satisfaction Client</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15K+</div>
+                <div class="stat-label">Clients Satisfaits</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Livraisons à Temps</div>
+            </div>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"J'ai commandé des granulés pour mon poêle et je suis très satisfait. Le bois est de très bonne qualité, la livraison a été rapide et le chauffeur très professionnel. Je recommande vivement !"</p>
+                    <div class="client">Marie L. - Bordeaux</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Service impeccable ! Les bûches de nuit tiennent vraiment toute la nuit. Plus besoin de se lever pour alimenter le feu. Le rapport qualité/prix est excellent. Merci Express Bois !"</p>
+                    <div class="client">Pierre D. - Lyon</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Commande passée en ligne, livraison le lendemain. Le bois est bien sec et facile à allumer. J'apprécie particulièrement la traçabilité du bois et l'engagement écologique de l'entreprise."</p>
+                    <div class="client">Sophie T. - Strasbourg</div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+        
+        <button class="review-btn" id="open-review">Laissez un avis</button>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact">
+        <div class="section-title">
+            <h2>Contactez-Nous</h2>
+            <p>Nous sommes à votre disposition pour toute question</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Notre Adresse</h3>
+                        <p>86 Boulevard FELIX FAURE 93300 , AUBERVILIERS - FRANCE</p>
+                        <p>SIRET : 800 790 677 00036</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Téléphone</h3>
+                        <p>+33 756-87-42-15</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>contact@expressbois.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Horaires d'Ouverture</h3>
+                        <p>Lun-Ven: 8h-19h</p>
+                        <p>Sam: 9h-18h</p>
+                        <p>Dim: 10h-16h</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map">
+                Nous livrons partout en France
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Express Bois</h3>
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+33756874215" class="social-link" target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp"></i>
+</a>
+                    </div>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Produits</h3>
+                <ul>
+                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="details-buches-jour.html">Bûches de jour</a></li>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-buches-nuit-charme.html">Bûches de nuit - Charme</a></li>
+                    <li><a href="details-buches-jour-chene-charme.html">Bûches de jour - Chêne/Charme</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Menu fixe en bas -->
+    <nav class="bottom-nav">
+        <button class="nav-btn" onclick="scrollToSection('hero')">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('products')">
+            <i class="fas fa-tree"></i>
+            <span>Produits</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('why-us')">
+            <i class="fas fa-star"></i>
+            <span>Pourquoi nous</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('testimonials')">
+            <i class="fas fa-comments"></i>
+            <span>Témoignages</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('contact')">
+            <i class="fas fa-phone-alt"></i>
+            <span>Contact</span>
+        </button>
+    </nav>
+
+    <!-- Modal pour laisser un avis -->
+    <div class="modal" id="review-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-review">&times;</span>
+            <h3>Laissez votre avis</h3>
+            <div class="rating-input">
+                <i class="far fa-star" data-rating="1"></i>
+                <i class="far fa-star" data-rating="2"></i>
+                <i class="far fa-star" data-rating="3"></i>
+                <i class="far fa-star" data-rating="4"></i>
+                <i class="far fa-star" data-rating="5"></i>
+            </div>
+            <div class="form-group">
+                <label for="review-name">Votre pseudo</label>
+                <input type="text" id="review-name" placeholder="Votre nom ou pseudo">
+            </div>
+            <div class="form-group">
+                <label for="review-text">Votre témoignage</label>
+                <textarea id="review-text" placeholder="Dites-nous ce que vous avez pensé de nos produits et services..."></textarea>
+            </div>
+            <button class="submit-review" id="submit-review">Envoyer mon avis</button>
+        </div>
+    </div>
+
+    <!-- Modal pour vérifier la livraison -->
+    <div class="modal" id="delivery-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-delivery">&times;</span>
+            <h3>Vérifiez la livraison</h3>
+            <div class="form-group">
+                <label for="postal-code">Entrez votre code postal :</label>
+                <input type="text" id="postal-code" placeholder="Ex: 75001" maxlength="5">
+            </div>
+            <button class="submit-review" id="check-delivery">Vérifier</button>
+            <div id="delivery-result" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Modal pour calculer les besoins -->
+    <div class="modal" id="calculator-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-calculator">&times;</span>
+            <h3>Calculer vos besoins en bois</h3>
+            <div class="form-group">
+                <label for="surface">Surface à chauffer (m²) :</label>
+                <input type="number" id="surface" placeholder="Ex: 80">
+            </div>
+            <div class="form-group">
+                <label for="wood-type">Type de bois préféré :</label>
+                <select id="wood-type">
+                    <option value="granules-premium">Granulés Premium</option>
+                    <option value="granules-standard">Granulés Standard</option>
+                    <option value="buches-nuit" selected>Bûches de Nuit</option>
+                    <option value="buches-jour">Bûches de Jour</option>
+                    <option value="bois-fendu">Bois Fendu</option>
+                    <option value="briquettes">Briquettes Compressées</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="isolation">Qualité d'isolation :</label>
+                <select id="isolation">
+                    <option value="1">Mauvaise</option>
+                    <option value="0.8" selected>Moyenne</option>
+                    <option value="0.6">Bonne</option>
+                    <option value="0.4">Excellente</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="usage">Usage :</label>
+                <select id="usage">
+                    <option value="1" selected>Chauffage principal</option>
+                    <option value="0.7">Chauffage d'appoint</option>
+                    <option value="0.5">Chauffage occasionnel</option>
+                </select>
+            </div>
+            <button class="submit-review" id="calculate-needs">Calculer</button>
+            <div id="calculation-result" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-text"></span>
+    </div>
+
+    <script>
+        // Fonction de défilement pour le menu
+        function scrollToSection(sectionId) {
+            document.querySelector(`.${sectionId}`).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Modal d'avis
+        const reviewModal = document.getElementById('review-modal');
+        const openReviewBtn = document.getElementById('open-review');
+        const closeReviewBtn = document.getElementById('close-review');
+        
+        openReviewBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'flex';
+        });
+        
+        closeReviewBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'none';
+        });
+        
+        // Modal de livraison
+        const deliveryModal = document.getElementById('delivery-modal');
+        const openDeliveryBtn = document.getElementById('open-delivery');
+        const closeDeliveryBtn = document.getElementById('close-delivery');
+        
+        openDeliveryBtn.addEventListener('click', () => {
+            deliveryModal.style.display = 'flex';
+        });
+        
+        closeDeliveryBtn.addEventListener('click', () => {
+            deliveryModal.style.display = 'none';
+        });
+        
+        // Modal de calcul
+        const calculatorModal = document.getElementById('calculator-modal');
+        const openCalculatorBtn = document.getElementById('open-calculator');
+        const closeCalculatorBtn = document.getElementById('close-calculator');
+        
+        openCalculatorBtn.addEventListener('click', () => {
+            calculatorModal.style.display = 'flex';
+        });
+        
+        closeCalculatorBtn.addEventListener('click', () => {
+            calculatorModal.style.display = 'none';
+        });
+        
+        // Fermer les modals en cliquant à l'extérieur
+        window.addEventListener('click', (e) => {
+            if (e.target === reviewModal) {
+                reviewModal.style.display = 'none';
+            }
+            if (e.target === deliveryModal) {
+                deliveryModal.style.display = 'none';
+            }
+            if (e.target === calculatorModal) {
+                calculatorModal.style.display = 'none';
+            }
+        });
+
+        // Système d'étoiles pour les avis
+        const stars = document.querySelectorAll('.rating-input i');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.remove('far');
+                        s.classList.add('fas', 'active');
+                    } else {
+                        s.classList.remove('fas', 'active');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
+
+        // Carrousel de témoignages
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.slider-dot');
+        const slider = document.querySelector('.testimonials-slider');
+        
+        function showSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Mise à jour des points de navigation
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            currentSlide = index;
+        }
+        
+        // Navigation par points
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Rotation automatique du carrousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 5000);
+
+        // Vérification de la livraison
+        document.getElementById('check-delivery').addEventListener('click', function() {
+            const postalCode = document.getElementById('postal-code').value;
+            const resultDiv = document.getElementById('delivery-result');
+            
+            if (postalCode && /^\d{5}$/.test(postalCode)) {
+                // Simuler une vérification
+                const isAvailable = Math.random() > 0.2; // 80% de disponibilité
+                
+                if (isAvailable) {
+                    resultDiv.innerHTML = `<div style="color: #4CAF50; font-weight: 600;"><i class="fas fa-check-circle"></i> Livraison disponible à ${postalCode} !</div>
+                    <p style="margin-top: 10px;">Nous pouvons vous livrer sous 48h.</p>`;
+                } else {
+                    resultDiv.innerHTML = `<div style="color: #f44336; font-weight: 600;"><i class="fas fa-exclamation-circle"></i> Livraison non disponible pour ${postalCode}</div>
+                    <p style="margin-top: 10px;">Veuillez nous contacter pour plus d'informations.</p>`;
+                }
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = `<div style="color: #f44336; font-weight: 600;"><i class="fas fa-exclamation-circle"></i> Code postal invalide</div>
+                <p style="margin-top: 10px;">Veuillez entrer un code postal français à 5 chiffres.</p>`;
+                resultDiv.style.display = 'block';
+            }
+        });
+
+        // Calcul des besoins en bois
+        document.getElementById('calculate-needs').addEventListener('click', function() {
+            const surface = parseFloat(document.getElementById('surface').value);
+            const isolation = parseFloat(document.getElementById('isolation').value);
+            const usage = parseFloat(document.getElementById('usage').value);
+            const woodType = document.getElementById('wood-type').value;
+            const resultDiv = document.getElementById('calculation-result');
+            
+            if (surface && !isNaN(surface)) {
+                // Formule adaptée selon le type de bois
+                const besoinBase = Math.round(surface * 0.2 * isolation * usage);
+                
+                let recommendation = '';
+                let quantity = '';
+                let price = '';
+                
+                switch(woodType) {
+                    case 'granules-premium':
+                        quantity = `${Math.round(besoinBase * 1.2)} kg/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 1.2 * 0.49)}€/an`;
+                        recommendation = 'Granulés Premium - Rendement optimal, combustion propre';
+                        break;
+                    case 'granules-standard':
+                        quantity = `${Math.round(besoinBase * 1.5)} kg/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 1.5 * 0.31)}€/an`;
+                        recommendation = 'Granulés Standard - Bon rapport qualité-prix';
+                        break;
+                    case 'buches-nuit':
+                        quantity = `${Math.round(besoinBase * 0.8)} stères/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 0.8 * 89)}€/an`;
+                        recommendation = 'Bûches de Nuit - Combustion lente 8-10h';
+                        break;
+                    case 'buches-jour':
+                        quantity = `${Math.round(besoinBase * 1.1)} stères/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 1.1 * 82)}€/an`;
+                        recommendation = 'Bûches de Jour - Montée rapide en température';
+                        break;
+                    case 'bois-fendu':
+                        quantity = `${besoinBase} stères/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 79)}€/an`;
+                        recommendation = 'Bois Fendu - Mélange feuillus, polyvalent';
+                        break;
+                    case 'briquettes':
+                        quantity = `${Math.round(besoinBase * 0.9)} packs/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 0.9 * 7.2)}€/an`;
+                        recommendation = 'Bois Compressé - Pratiques, combustion régulière';
+                        break;
+                }
+                
+                resultDiv.innerHTML = `<div style="color: #4CAF50; font-weight: 600;"><i class="fas fa-fire"></i> Vos besoins estimés</div>
+                <p style="margin-top: 15px;">Pour chauffer ${surface} m² avec ${recommendation} :</p>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <p><strong>Quantité recommandée :</strong> ${quantity}</p>
+                    <p><strong>${price}</strong></p>
+                </div>
+                <p style="font-size: 0.9em; color: #666;">Ces estimations sont indicatives et peuvent varier selon votre usage et la région.</p>`;
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = `<div style="color: #f44336; font-weight: 600;"><i class="fas fa-exclamation-circle"></i> Surface invalide</div>
+                <p style="margin-top: 10px;">Veuillez entrer une surface valide en m².</p>`;
+                resultDiv.style.display = 'block';
+            }
+        });
+
+        // Soumission d'avis
+        document.getElementById('submit-review').addEventListener('click', function() {
+            const name = document.getElementById('review-name').value;
+            const text = document.getElementById('review-text').value;
+            const stars = document.querySelectorAll('.rating-input i.fas').length;
+            
+            if (name && text && stars > 0) {
+                // Simulation d'envoi AJAX
+                setTimeout(() => {
+                    showNotification('Votre avis a été envoyé avec succès ! Merci pour votre retour.', 'success');
+                    reviewModal.style.display = 'none';
+                    
+                    // Réinitialiser le formulaire
+                    document.getElementById('review-name').value = '';
+                    document.getElementById('review-text').value = '';
+                    stars.forEach(star => {
+                        star.classList.remove('fas', 'active');
+                        star.classList.add('far');
+                    });
+                }, 1000);
+            } else {
+                showNotification('Veuillez remplir tous les champs et donner une note.', 'error');
+            }
+        });
+
+        // Fonction de notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
