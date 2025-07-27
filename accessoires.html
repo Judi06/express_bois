@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessoires | Express Bois</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="express_bois_logo.png">
     <style>
         * {
             margin: 0;
@@ -228,28 +229,46 @@
             text-align: center;
         }
 
+        .card-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .details-btn, .order-btn {
+            flex: 1;
+            padding: 12px 10px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .details-btn {
+            background-color: var(--light);
+            color: var(--dark);
+            border: 1px solid #ddd;
+        }
+        
+        .details-btn:hover {
+            background-color: #e0d6c9;
+            transform: translateY(-3px);
+        }
+        
         .order-btn {
             background-color: var(--primary);
             color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
         }
-
+        
         .order-btn:hover {
             background-color: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* MODAL DE COMMANDE */
+        /* MODAL DE DÉTAILS */
         .modal {
             display: none;
             position: fixed;
@@ -269,7 +288,7 @@
             background: white;
             padding: 40px;
             border-radius: 15px;
-            max-width: 800px;
+            max-width: 900px;
             width: 90%;
             position: relative;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
@@ -307,7 +326,145 @@
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
         }
+        
+        /* Onglets */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e0d6c9;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #777;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            color: var(--dark);
+            background-color: #f9f5f0;
+        }
+        
+        .tab-pane {
+            display: none;
+            padding: 20px 0;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content {
+            min-height: 300px;
+        }
+        
+        .tab-pane h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .tab-pane p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .specs-list-modal {
+            list-style: none;
+        }
+        
+        .specs-list-modal li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .specs-list-modal li i {
+            color: var(--accent);
+            min-width: 20px;
+        }
+        
+        .reviews-container {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .review {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .review-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .review-rating {
+            color: #FFD700;
+        }
+        
+        .review-content {
+            line-height: 1.5;
+        }
+        
+        .order-btn-modal {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .order-btn-modal:hover {
+            background-color: #d84315;
+        }
 
+        /* MODAL DE COMMANDE */
         .form-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -685,6 +842,14 @@
                 width: 40px;
                 height: 40px;
             }
+            
+            .card-buttons {
+                flex-direction: column;
+            }
+            
+            .tab-content {
+                min-height: 200px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -719,6 +884,16 @@
                 font-size: 1.5rem;
                 width: 35px;
                 height: 35px;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                flex: 1 0 33%;
+                padding: 10px 5px;
+                font-size: 0.9rem;
             }
         }
 
@@ -792,7 +967,17 @@
                         <li><i class="fas fa-tree"></i> Compatible bûches et granulés</li>
                     </ul>
                     <div class="price">600 €</div>
-                    <button class="order-btn" data-product="Poêle à bois" data-price="600">Lancer Commande</button>
+                    <div class="card-buttons">
+                        <button class="details-btn" 
+                                data-product="Poêle à bois"
+                                data-price="600"
+                                data-description="Ce poêle à bois haut de gamme allie performance et design. Fabriqué en acier de qualité, il offre un rendement exceptionnel de 85% pour chauffer jusqu'à 150m². Équipé d'une porte vitrée renforcée et d'un système de circulation d'air optimisé, il garantit une diffusion de chaleur uniforme dans toute la pièce."
+                                data-specs='[{"icon":"fas fa-fire", "text":"Puissance: 8-12 kW"},{"icon":"fas fa-ruler-combined", "text":"Surface chauffée: 100-150 m²"},{"icon":"fas fa-weight", "text":"Poids: 120 kg"},{"icon":"fas fa-certificate", "text":"Rendement: 85%"},{"icon":"fas fa-tree", "text":"Compatible bûches et granulés"},{"icon":"fas fa-cube", "text":"Dimensions (HxLxP): 85x45x40 cm"},{"icon":"fas fa-paint-brush", "text":"Finition: Acier brossé"},{"icon":"fas fa-truck", "text":"Livraison: 2 jours ouvrés"}]'
+                                data-reviews='[{"author":"Jean D.", "rating":5, "content":"Excellent produit, très bon rendement. Installation facile."},{"author":"Marie L.", "rating":4, "content":"Très satisfaite, chauffe bien ma maison de 120m²."},{"author":"Thomas P.", "rating":5, "content":"Design moderne et performances au top. Je recommande!"}]'>
+                            Voir détails
+                        </button>
+                        <button class="order-btn" data-product="Poêle à bois" data-price="600">Commander</button>
+                    </div>
                 </div>
             </div>
             
@@ -815,7 +1000,17 @@
                         <li><i class="fas fa-plug"></i> Programmation numérique</li>
                     </ul>
                     <div class="price">700 €</div>
-                    <button class="order-btn" data-product="Poêle à granulés" data-price="700">Lancer Commande</button>
+                    <div class="card-buttons">
+                        <button class="details-btn" 
+                                data-product="Poêle à granulés"
+                                data-price="700"
+                                data-description="Le poêle à granulés nouvelle génération avec programmation intelligente. Son réservoir de 25kg permet une autonomie de plusieurs jours. Connecté à votre smartphone, vous pouvez contrôler la température à distance et programmer les plages de chauffe selon vos habitudes."
+                                data-specs='[{"icon":"fas fa-fire", "text":"Puissance: 6-10 kW"},{"icon":"fas fa-ruler-combined", "text":"Surface chauffée: 80-120 m²"},{"icon":"fas fa-box", "text":"Réservoir: 25 kg"},{"icon":"fas fa-certificate", "text":"Rendement: 92%"},{"icon":"fas fa-plug", "text":"Programmation numérique"},{"icon":"fas fa-mobile-alt", "text":"Contrôle smartphone"},{"icon":"fas fa-battery-full", "text":"Autonomie: 48h à puissance moyenne"}]'
+                                data-reviews='[{"author":"Sophie M.", "rating":5, "content":"Très pratique avec l\'application mobile, chauffage optimal."},{"author":"Pierre T.", "rating":4, "content":"Silencieux et efficace, consommation raisonnable."}]'>
+                            Voir détails
+                        </button>
+                        <button class="order-btn" data-product="Poêle à granulés" data-price="700">Commander</button>
+                    </div>
                 </div>
             </div>
             
@@ -838,7 +1033,17 @@
                         <li><i class="fas fa-wind"></i> Convection naturelle</li>
                     </ul>
                     <div class="price">800 €</div>
-                    <button class="order-btn" data-product="Insert cheminée" data-price="800">Lancer Commande</button>
+                    <div class="card-buttons">
+                        <button class="details-btn" 
+                                data-product="Insert cheminée"
+                                data-price="800"
+                                data-description="Transformez votre cheminée traditionnelle en système de chauffage performant avec cet insert haut rendement. Conçu pour s'adapter à la plupart des foyers existants, il augmente considérablement l'efficacité thermique tout en conservant le charme d'un feu de bois."
+                                data-specs='[{"icon":"fas fa-fire", "text":"Puissance: 7-14 kW"},{"icon":"fas fa-home", "text":"Compatible cheminée existante"},{"icon":"fas fa-certificate", "text":"Rendement: 78%"},{"icon":"fas fa-weight", "text":"Poids: 95 kg"},{"icon":"fas fa-wind", "text":"Convection naturelle"},{"icon":"fas fa-ruler", "text":"Dimensions standard: 70x50x45 cm"},{"icon":"fas fa-shield-alt", "text":"Garantie: 5 ans"}]'
+                                data-reviews='[{"author":"Marc D.", "rating":5, "content":"Installation facile, rendement impressionnant. Chaud immédiatement!"},{"author":"Elise R.", "rating":4, "content":"Très bon rapport qualité/prix. Mon salon est maintenant bien chaud."}]'>
+                            Voir détails
+                        </button>
+                        <button class="order-btn" data-product="Insert cheminée" data-price="800">Commander</button>
+                    </div>
                 </div>
             </div>
             
@@ -861,7 +1066,17 @@
                         <li><i class="fas fa-fan"></i> Ventilation intégrée</li>
                     </ul>
                     <div class="price">4900 €</div>
-                    <button class="order-btn" data-product="Foyer fermé" data-price="4900">Lancer Commande</button>
+                    <div class="card-buttons">
+                        <button class="details-btn" 
+                                data-product="Foyer fermé"
+                                data-price="4900"
+                                data-description="Le foyer fermé haut de gamme pour les grandes surfaces. Avec sa puissance de 15kW max, il peut chauffer jusqu'à 200m². Son système de ventilation intégré distribue la chaleur uniformément dans toute la maison. La grande porte vitrée offre une vue imprenable sur les flammes."
+                                data-specs='[{"icon":"fas fa-fire", "text":"Puissance: 10-15 kW"},{"icon":"fas fa-ruler-combined", "text":"Surface chauffée: 120-200 m²"},{"icon":"fas fa-certificate", "text":"Rendement: 80%"},{"icon":"fas fa-door-open", "text":"Porte vitrée panoramique"},{"icon":"fas fa-fan", "text":"Ventilation intégrée"},{"icon":"fas fa-arrows-alt-h", "text":"Largeur: 110 cm"},{"icon":"fas fa-tools", "text":"Installation professionnelle incluse"}]'
+                                data-reviews='[{"author":"Nathalie B.", "rating":5, "content":"Parfait pour ma grande maison, chaleur douce et agréable."},{"author":"Jacques F.", "rating":5, "content":"Investissement conséquent mais rentable sur le long terme."}]'>
+                            Voir détails
+                        </button>
+                        <button class="order-btn" data-product="Foyer fermé" data-price="4900">Commander</button>
+                    </div>
                 </div>
             </div>
             
@@ -884,7 +1099,17 @@
                         <li><i class="fas fa-cogs"></i> Réglage hauteur de grille</li>
                     </ul>
                     <div class="price">1230 €</div>
-                    <button class="order-btn" data-product="Barbecue à bois" data-price="1230">Lancer Commande</button>
+                    <div class="card-buttons">
+                        <button class="details-btn" 
+                                data-product="Barbecue à bois"
+                                data-price="1230"
+                                data-description="Barbecue professionnel en acier inoxydable pour les amateurs de cuisine au feu de bois. Sa grande surface de cuisson permet de préparer des repas pour de nombreuses personnes. Le système de réglage de hauteur de grille offre un contrôle précis de la cuisson."
+                                data-specs='[{"icon":"fas fa-utensils", "text":"Surface cuisson: 0,71m²"},{"icon":"fas fa-weight", "text":"Poids: 160 kg"},{"icon":"fas fa-layer-group", "text":"1 niveau de cuisson"},{"icon":"fas fa-fire", "text":"Combustion bois et charbon"},{"icon":"fas fa-cogs", "text":"Réglage hauteur de grille"},{"icon":"fas fa-ruler", "text":"Dimensions: 120x80x110 cm"},{"icon":"fas fa-shield-alt", "text":"Garantie: 3 ans"}]'
+                                data-reviews='[{"author":"Thomas L.", "rating":5, "content":"Parfait pour mes grandes réunions familiales, cuisson homogène."},{"author":"Céline M.", "rating":4, "content":"Très robuste, montage un peu long mais résultat au top."}]'>
+                            Voir détails
+                        </button>
+                        <button class="order-btn" data-product="Barbecue à bois" data-price="1230">Commander</button>
+                    </div>
                 </div>
             </div>
             
@@ -902,255 +1127,287 @@
                     <ul class="specs-list">
                         <li><i class="fas fa-temperature-high"></i> Température: 500°C</li>
                         <li><i class="fas fa-ruler-combined"></i> Diamètre intérieur: 60 cm</li>
-                        <li><i class="fas fa-weight"></i> Poids: 64 kg</li>
-                        <li><i class="fas fa-fire"></i> Charbon de bois</li>
-                        <li><i class="fas fa-pizza-slice"></i> Cuisson en 90 secondes</li>
-                    </ul>
-                    <div class="price">400 €</div>
-                    <button class="order-btn" data-product="Four à pizza extérieur" data-price="400">Lancer Commande</button>
-                </div>
-            </div>
-            
-            <!-- Tronçonneuse -->
-            <div class="accessory-card">
-                <div class="accessory-img-container" 
-                     data-images='["images/accessoires/tronçonneuse-1.webp", "images/accessoires/tronçonneuse.jfif", "images/accessoires/tronçonneuse-2.webp"]'>
-                    <div class="main-img" style="background-image: url('images/accessoires/tronçonneuse-1.webp');"></div>
-                    <div class="image-indicator">
-                        <i class="fas fa-images"></i> <span>3 photos</span>
-                    </div>
-                </div>
-                <div class="accessory-info">
-                    <h3>Tronçonneuse professionnelle</h3>
-                    <ul class="specs-list">
-                        <li><i class="fas fa-bolt"></i> Moteur: 50 cm³</li>
-                        <li><i class="fas fa-ruler"></i> Guide-chaîne: 40 cm</li>
-                        <li><i class="fas fa-weight"></i> Poids: 5,2 kg</li>
-                        <li><i class="fas fa-tachometer-alt"></i> Vitesse chaîne: 25 m/s</li>
-                        <li><i class="fas fa-gas-pump"></i> Réservoir: 500 ml</li>
-                    </ul>
-                    <div class="price">989 €</div>
-                    <button class="order-btn" data-product="Tronçonneuse professionnelle" data-price="989">Lancer Commande</button>
-                </div>
-            </div>
-            
-            <!-- Groupe électrogène -->
-            <div class="accessory-card">
-                <div class="accessory-img-container" 
-                     data-images='["images/accessoires/groupe-electro.jpg", "images/accessoires/groupe-electro-1.jpg", "images/accessoires/groupe-electro-2.jpg"]'>
-                    <div class="main-img" style="background-image: url('images/accessoires/groupe-electro.jpg');"></div>
-                    <div class="image-indicator">
-                        <i class="fas fa-images"></i> <span>3 photos</span>
-                    </div>
-                </div>
-                <div class="accessory-info">
-                    <h3>Groupe électrogène</h3>
-                    <ul class="specs-list">
-                        <li><i class="fas fa-bolt"></i> Puissance: 6,5 kW</li>
-                        <li><i class="fas fa-gas-pump"></i> Réservoir: 25 L</li>
-                        <li><i class="fas fa-clock"></i> Autonomie: 12h à 50%</li>
-                        <li><i class="fas fa-plug"></i> Prises: 2x 230V, 1x 12V</li>
-                        <li><i class="fas fa-volume-up"></i> Niveau sonore: 78 dB</li>
-                    </ul>
-                    <div class="price">999 €</div>
-                    <button class="order-btn" data-product="Groupe électrogène" data-price="999">Lancer Commande</button>
-                </div>
-            </div>
-            
-            <!-- Kit solaire autonome -->
-            <div class="accessory-card">
-                <div class="accessory-img-container" 
-                     data-images='["images/accessoires/kit-solaire.jpg", "images/accessoires/kit-solaire-1.png", "images/accessoires/kit-solaire-2.png"]'>
-                    <div class="main-img" style="background-image: url('images/accessoires/kit-solaire.jpg');"></div>
-                    <div class="image-indicator">
-                        <i class="fas fa-images"></i> <span>3 photos</span>
-                    </div>
-                </div>
-                <div class="accessory-info">
-                    <h3>Kit solaire autonome</h3>
-                    <ul class="specs-list">
-                        <li><i class="fas fa-solar-panel"></i> Panneaux: 3x 300W</li>
-                        <li><i class="fas fa-battery-full"></i> Batterie: 5 kWh</li>
-                        <li><i class="fas fa-bolt"></i> Onduleur: 3 kW</li>
-                        <li><i class="fas fa-home"></i> Autonomie: 2-3 jours</li>
-                        <li><i class="fas fa-plug"></i> Compatible réseau</li>
-                    </ul>
-                    <div class="price">1500 €</div>
-                    <button class="order-btn" data-product="Kit solaire autonome" data-price="1500">Lancer Commande</button>
-                </div>
-            </div>
+        <li><i class="fas fa-weight"></i> Poids: 64 kg</li>
+        <li><i class="fas fa-fire"></i> Charbon de bois</li>
+        <li><i class="fas fa-pizza-slice"></i> Cuisson en 90 secondes</li>
+    </ul>
+    <div class="price">400 €</div>
+    <div class="card-buttons">
+        <button class="details-btn" 
+                data-product="Four à pizza extérieur"
+                data-price="400"
+                data-description="Four à pizza professionnel pour réaliser des pizzas de qualité restaurant dans votre jardin. Atteint rapidement 500°C pour une cuisson parfaite en 90 secondes. La pierre réfractaire assure une diffusion de chaleur uniforme pour une cuisson impeccable."
+                data-specs='[{"icon":"fas fa-temperature-high", "text":"Température max: 500°C"},{"icon":"fas fa-ruler-combined", "text":"Diamètre intérieur: 60 cm"},{"icon":"fas fa-weight", "text":"Poids: 64 kg"},{"icon":"fas fa-fire", "text":"Charbon de bois"},{"icon":"fas fa-pizza-slice", "text":"Cuisson en 90 secondes"},{"icon":"fas fa-thermometer-half", "text":"Thermomètre intégré"},{"icon":"fas fa-shipping-fast", "text":"Livraison offerte"}]'
+                data-reviews='[{"author":"David P.", "rating":5, "content":"Pizzas parfaites à chaque fois, mes invités sont impressionnés!"},{"author":"Laura G.", "rating":5, "content":"Facile à utiliser, résultat pro. Excellent investissement."}]'>
+            Voir détails
+        </button>
+        <button class="order-btn" data-product="Four à pizza extérieur" data-price="400">Commander</button>
+    </div>
+</div>
+</div>
 
-            <!-- Installation poêle -->
-            <!--
-            <div class="accessory-card">
-                <div class="accessory-img" style="background-image: url('images/accessoires/accessoire.png');"></div>
-                <div class="accessory-info">
-                    <h3>Installation poêle</h3>
-                    <ul class="specs-list">
-                        <li><i class="fas fa-tools"></i> Installation complète</li>
-                        <li><i class="fas fa-user-check"></i> Par technicien certifié</li>
-                        <li><i class="fas fa-shield-alt"></i> Garantie 2 ans</li>
-                        <li><i class="fas fa-file-alt"></i> Certificat de conformité</li>
-                        <li><i class="fas fa-home"></i> Pour maison jusqu'à 150m²</li>
-                    </ul>
-                    <div class="price">À partir de 590 €</div>
-                    <button class="order-btn" data-product="Installation poêle" data-price="590">Lancer Commande</button>
-                </div>
-            </div>
-            -->
-            
-            <!-- Pose de conduit -->
-            <!--
-            <div class="accessory-card">
-                <div class="accessory-img" style="background-image: url('images/accessoires/accessoire.png');"></div>
-                <div class="accessory-info">
-                    <h3>Pose de conduit</h3>
-                    <ul class="specs-list">
-                        <li><i class="fas fa-pencil-ruler"></i> Conception sur mesure</li>
-                        <li><i class="fas fa-hard-hat"></i> Installation professionnelle</li>
-                        <li><i class="fas fa-shield-alt"></i> Garantie 10 ans</li>
-                        <li><i class="fas fa-file-alt"></i> Attestation de conformité</li>
-                        <li><i class="fas fa-home"></i> Pour tous types de toiture</li>
-                    </ul>
-                    <div class="price">À partir de 850 €</div>
-                    <button class="order-btn" data-product="Pose de conduit" data-price="850">Lancer Commande</button>
-                </div>
-            </div>
-            -->
-            
-
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Express Bois</h3>
-                <p>Votre fournisseur de bois de chauffage, livré partout en France. Confiez-nous votre confort hivernal.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/+33756874215" class="social-link" target="_blank" rel="noopener">
-  <i class="fab fa-whatsapp"></i>
-</a>
-                    </div>
-            </div>
-            <div class="footer-column">
-                <h3>Nos Produits</h3>
-                <ul>
-                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
-                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
-                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
-                    <li><a href="details-bois-compresse.html">Briquettes compressées</a></li>
-                    <li><a href="details-buches-jour.html">Bûches de jour</a></li>
-                    <li><a href="accessoires.html">Accessoires</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Informations</h3>
-                <ul>
-                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
-                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
-                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
-        </div>
-    </footer>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <img class="lightbox-img" src="" alt="Image produit">
-            <div class="lightbox-close">&times;</div>
-            <div class="lightbox-prev">&#10094;</div>
-            <div class="lightbox-next">&#10095;</div>
-            <div class="image-counter"></div>
+<!-- Tronçonneuse -->
+<div class="accessory-card">
+    <div class="accessory-img-container" 
+         data-images='["images/accessoires/tronçonneuse-1.webp", "images/accessoires/tronçonneuse.jfif", "images/accessoires/tronçonneuse-2.webp"]'>
+        <div class="main-img" style="background-image: url('images/accessoires/tronçonneuse-1.webp');"></div>
+        <div class="image-indicator">
+            <i class="fas fa-images"></i> <span>3 photos</span>
         </div>
     </div>
+    <div class="accessory-info">
+        <h3>Tronçonneuse professionnelle</h3>
+        <ul class="specs-list">
+            <li><i class="fas fa-bolt"></i> Moteur: 50 cm³</li>
+            <li><i class="fas fa-ruler"></i> Guide-chaîne: 40 cm</li>
+            <li><i class="fas fa-weight"></i> Poids: 5,2 kg</li>
+            <li><i class="fas fa-tachometer-alt"></i> Vitesse chaîne: 25 m/s</li>
+            <li><i class="fas fa-gas-pump"></i> Réservoir: 500 ml</li>
+        </ul>
+        <div class="price">989 €</div>
+        <div class="card-buttons">
+            <button class="details-btn" 
+                    data-product="Tronçonneuse professionnelle"
+                    data-price="989"
+                    data-description="Tronçonneuse professionnelle pour les travaux intensifs. Son moteur de 50 cm³ offre une puissance exceptionnelle, tandis que son poids optimisé (5,2 kg) réduit la fatigue lors des longues sessions de travail. Sécurité optimale avec frein de chaîne instantané."
+                    data-specs='[{"icon":"fas fa-bolt", "text":"Moteur: 50 cm³"},{"icon":"fas fa-ruler", "text":"Guide-chaîne: 40 cm"},{"icon":"fas fa-weight", "text":"Poids: 5,2 kg"},{"icon":"fas fa-tachometer-alt", "text":"Vitesse chaîne: 25 m/s"},{"icon":"fas fa-gas-pump", "text":"Réservoir: 500 ml"},{"icon":"fas fa-shield-alt", "text":"Système antivibration"},{"icon":"fas fa-bell", "text":"Frein de chaîne instantané"}]'
+                    data-reviews='[{"author":"Paul R.", "rating":5, "content":"Puissante et maniable, parfaite pour abattre mes arbres."},{"author":"Martin D.", "rating":4, "content":"Très satisfait, consommation raisonnable pour la puissance."}]'>
+                Voir détails
+            </button>
+            <button class="order-btn" data-product="Tronçonneuse professionnelle" data-price="989">Commander</button>
+        </div>
+    </div>
+</div>
 
-    <!-- Modal de commande -->
-    <div class="modal" id="order-modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-order">&times;</span>
-            <h3>Commande d'Accessoire</h3>
-            <div class="product-title-modal" id="product-title">Produit</div>
+<!-- Groupe électrogène -->
+<div class="accessory-card">
+    <div class="accessory-img-container" 
+         data-images='["images/accessoires/groupe-electro.jpg", "images/accessoires/groupe-electro-1.jpg", "images/accessoires/groupe-electro-2.jpg"]'>
+        <div class="main-img" style="background-image: url('images/accessoires/groupe-electro.jpg');"></div>
+        <div class="image-indicator">
+            <i class="fas fa-images"></i> <span>3 photos</span>
+        </div>
+    </div>
+    <div class="accessory-info">
+        <h3>Groupe électrogène</h3>
+        <ul class="specs-list">
+            <li><i class="fas fa-bolt"></i> Puissance: 6,5 kW</li>
+            <li><i class="fas fa-gas-pump"></i> Réservoir: 25 L</li>
+            <li><i class="fas fa-clock"></i> Autonomie: 12h à 50%</li>
+            <li><i class="fas fa-plug"></i> Prises: 2x 230V, 1x 12V</li>
+            <li><i class="fas fa-volume-up"></i> Niveau sonore: 78 dB</li>
+        </ul>
+        <div class="price">999 €</div>
+        <div class="card-buttons">
+            <button class="details-btn" 
+                    data-product="Groupe électrogène"
+                    data-price="999"
+                    data-description="Groupe électrogène silencieux et puissant pour alimenter vos outils et appareils électriques lors de coupures ou en extérieur. Son moteur 4 temps économique offre jusqu'à 12 heures d'autonomie à charge moyenne. Niveau sonore réduit pour un usage plus confortable."
+                    data-specs='[{"icon":"fas fa-bolt", "text":"Puissance: 6,5 kW"},{"icon":"fas fa-gas-pump", "text":"Réservoir: 25 L"},{"icon":"fas fa-clock", "text":"Autonomie: 12h à 50%"},{"icon":"fas fa-plug", "text":"Prises: 2x 230V, 1x 12V"},{"icon":"fas fa-volume-up", "text":"Niveau sonore: 78 dB"},{"icon":"fas fa-car-battery", "text":"Démarrage électrique"},{"icon":"fas fa-tachometer-alt", "text":"Compteur heures intégré"}]'
+                    data-reviews='[{"author":"Luc B.", "rating":5, "content":"Très silencieux comparé à mon ancien modèle, autonomie top."},{"author":"Sandrine K.", "rating":4, "content":"Parfait pour mon atelier lors des coupures de courant."}]'>
+                Voir détails
+            </button>
+            <button class="order-btn" data-product="Groupe électrogène" data-price="999">Commander</button>
+        </div>
+    </div>
+</div>
+
+<!-- Kit solaire autonome -->
+<div class="accessory-card">
+    <div class="accessory-img-container" 
+         data-images='["images/accessoires/kit-solaire.jpg", "images/accessoires/kit-solaire-1.png", "images/accessoires/kit-solaire-2.png"]'>
+        <div class="main-img" style="background-image: url('images/accessoires/kit-solaire.jpg');"></div>
+        <div class="image-indicator">
+            <i class="fas fa-images"></i> <span>3 photos</span>
+        </div>
+    </div>
+    <div class="accessory-info">
+        <h3>Kit solaire autonome</h3>
+        <ul class="specs-list">
+            <li><i class="fas fa-solar-panel"></i> Panneaux: 3x 300W</li>
+            <li><i class="fas fa-battery-full"></i> Batterie: 5 kWh</li>
+            <li><i class="fas fa-bolt"></i> Onduleur: 3 kW</li>
+            <li><i class="fas fa-home"></i> Autonomie: 2-3 jours</li>
+            <li><i class="fas fa-plug"></i> Compatible réseau</li>
+        </ul>
+        <div class="price">1500 €</div>
+        <div class="card-buttons">
+            <button class="details-btn" 
+                    data-product="Kit solaire autonome"
+                    data-price="1500"
+                    data-description="Kit solaire complet pour une autonomie énergétique immédiate. Comprend 3 panneaux solaires de 300W chacun, une batterie de 5kWh de capacité et un onduleur de 3kW. Parfait pour alimenter une maison, un atelier ou pour une utilisation nomade. Compatible avec le réseau électrique existant."
+                    data-specs='[{"icon":"fas fa-solar-panel", "text":"Panneaux: 3x 300W"},{"icon":"fas fa-battery-full", "text":"Batterie: 5 kWh"},{"icon":"fas fa-bolt", "text":"Onduleur: 3 kW"},{"icon":"fas fa-home", "text":"Autonomie: 2-3 jours"},{"icon":"fas fa-plug", "text":"Compatible réseau"},{"icon":"fas fa-mobile-alt", "text":"Suivi via application"},{"icon":"fas fa-tools", "text":"Installation incluse"}]'
+                    data-reviews='[{"author":"Alexandre T.", "rating":5, "content":"Réduction immédiate sur ma facture électrique, installation pro."},{"author":"Julie M.", "rating":5, "content":"Parfait pour mon chalet isolé, autonomie suffisante."}]'>
+                Voir détails
+            </button>
+            <button class="order-btn" data-product="Kit solaire autonome" data-price="1500">Commander</button>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Express Bois</h3>
+            <p>Votre fournisseur de bois de chauffage, livré partout en France. Confiez-nous votre confort hivernal.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/+33756874215" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+        </div>
+        <div class="footer-column">
+            <h3>Nos Produits</h3>
+            <ul>
+                <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                <li><a href="details-bois-compresse.html">Briquettes compressées</a></li>
+                <li><a href="details-buches-jour.html">Bûches de jour</a></li>
+                <li><a href="accessoires.html">Accessoires</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Informations</h3>
+            <ul>
+                <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <img class="lightbox-img" src="" alt="Image produit">
+        <div class="lightbox-close">&times;</div>
+        <div class="lightbox-prev">&#10094;</div>
+        <div class="lightbox-next">&#10095;</div>
+        <div class="image-counter"></div>
+    </div>
+</div>
+
+<!-- Modal de détails -->
+<div class="modal" id="details-modal">
+    <div class="modal-content">
+        <span class="close-modal" id="close-details">&times;</span>
+        <h3>Détails du Produit</h3>
+        <div class="product-title-modal" id="details-product-title">Produit</div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="description">Description</button>
+            <button class="tab-btn" data-tab="specs">Spécifications</button>
+            <button class="tab-btn" data-tab="reviews">Avis</button>
+        </div>
+        
+        <div class="tab-content">
+            <div id="description" class="tab-pane active">
+                <p id="product-description"></p>
+            </div>
             
-            <div class="form-container">
-                <form id="order-form" class="order-form" action="https://formsubmit.co/contact@expressbois.com" method="POST">
-                    <input type="hidden" name="_subject" value="Nouvelle commande sur Express Bois">
-                    <input type="hidden" name="_next" value="https://www.expressbois.com/confirmation.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="product" id="form-product">
-                    <input type="hidden" name="price" id="form-price">
-                    <input type="hidden" name="delivery_type" id="form-delivery-type">
-                    <input type="hidden" name="total" id="form-total">
-                    
-                    <div class="form-group">
-                        <label for="name">Nom complet *</label>
-                        <input type="text" id="name" name="name" required placeholder="Votre nom et prénom">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Téléphone *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="06 12 34 56 78">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">Adresse *</label>
-                        <input type="text" id="address" name="address" required placeholder="Numéro, rue">
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="postal-code">Code postal *</label>
-                                <input type="text" id="postal-code" name="postal-code" required placeholder="75000">
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="city">Ville *</label>
-                                <input type="text" id="city" name="city" required placeholder="Ville">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="quantity">Quantité *</label>
-                                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="delivery-type">Type de livraison</label>
-                                <select id="delivery-type" name="Type de livraison" required>
-                                    <option value="">Sélectionnez</option>
-                                    <option value="Standard">Livraison standard (48h)</option>
-                                    <option value="Express">Livraison express (24h) + 25€</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message (optionnel)</label>
-                        <textarea id="message" name="message" placeholder="Informations supplémentaires, préférences de livraison..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-order">Confirmer la commande</button>
-                </form>
+            <div id="specs" class="tab-pane">
+                <ul class="specs-list-modal" id="product-specs">
+                    <!-- Les spécifications seront ajoutées dynamiquement -->
+                </ul>
+            </div>
+            
+            <div id="reviews" class="tab-pane">
+                <div class="reviews-container" id="product-reviews">
+                    <!-- Les avis seront ajoutés dynamiquement -->
+                </div>
+            </div>
+        </div>
+        
+        <button class="order-btn-modal" id="order-from-details">Commander ce produit</button>
+    </div>
+</div>
+
+<!-- Modal de commande -->
+<div class="modal" id="order-modal">
+    <div class="modal-content">
+        <span class="close-modal" id="close-order">&times;</span>
+        <h3>Commande d'Accessoire</h3>
+        <div class="product-title-modal" id="product-title">Produit</div>
+        
+        <div class="form-container">
+            <form id="order-form" class="order-form" action="https://formsubmit.co/contact@expressbois.com" method="POST">
+                <input type="hidden" name="_subject" value="Nouvelle commande sur Express Bois">
+                <input type="hidden" name="_next" value="https://www.expressbois.com/confirmation.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="product" id="form-product">
+                <input type="hidden" name="price" id="form-price">
+                <input type="hidden" name="delivery_type" id="form-delivery-type">
+                <input type="hidden" name="total" id="form-total">
                 
+                <div class="form-group">
+                    <label for="name">Nom complet *</label>
+                    <input type="text" id="name" name="name" required placeholder="Votre nom et prénom">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="06 12 34 56 78">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Adresse *</label>
+                    <input type="text" id="address" name="address" required placeholder="Numéro, rue">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="postal-code">Code postal *</label>
+                            <input type="text" id="postal-code" name="postal-code" required placeholder="75000">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="city">Ville *</label>
+                            <input type="text" id="city" name="city" required placeholder="Ville">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="quantity">Quantité *</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="delivery-type">Type de livraison</label>
+                            <select id="delivery-type" name="Type de livraison" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="Standard">Livraison standard (48h)</option>
+                                <option value="Express">Livraison express (24h) + 25€</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message (optionnel)</label>
+                    <textarea id="message" name="message" placeholder="Informations supplémentaires, préférences de livraison..."></textarea>
+                </div>
+            
                 <div class="order-summary">
                     <h4>Récapitulatif de commande</h4>
                     <div class="summary-item">
@@ -1166,11 +1423,16 @@
                         <span class="summary-price" id="total-price">0.00€</span>
                     </div>
                 </div>
-            </div>
+                
+                <button type="submit" class="submit-order">Confirmer la commande</button>
+            </form>
         </div>
     </div>
+</div>
 
-    <script>
+<script>
+    // Correction du problème des boutons "Voir Détails"
+    document.addEventListener('DOMContentLoaded', function() {
         // Variables globales pour la commande
         let currentProduct = "";
         let currentPrice = 0;
@@ -1179,61 +1441,139 @@
         let quantity = 1;
         let totalPrice = 0;
 
-        // Gestion des modals de commande
+        // Gestion des modals
+        const detailsModal = document.getElementById('details-modal');
         const orderModal = document.getElementById('order-modal');
+        const closeDetailsBtn = document.getElementById('close-details');
         const closeOrderBtn = document.getElementById('close-order');
-        const productTitle = document.getElementById('product-title');
-        const formProduct = document.getElementById('form-product');
-        const formPrice = document.getElementById('form-price');
-        const formDeliveryType = document.getElementById('form-delivery-type');
-        const formTotal = document.getElementById('form-total');
+        const detailsButtons = document.querySelectorAll('.details-btn');
         const orderButtons = document.querySelectorAll('.order-btn');
+        const orderFromDetailsBtn = document.getElementById('order-from-details');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
         
-        // Éléments du récapitulatif
-        const productNameRecap = document.getElementById('product-name-recap');
-        const quantityDisplay = document.getElementById('quantity-display');
-        const unitPrice = document.getElementById('unit-price');
-        const deliveryCostElement = document.getElementById('delivery-cost');
-        const totalPriceElement = document.getElementById('total-price');
-        const quantityInput = document.getElementById('quantity');
-        const deliveryTypeSelect = document.getElementById('delivery-type');
-        
-        // Ouvrir le modal de commande
-        orderButtons.forEach(button => {
+        // Ouvrir le modal de détails - CORRECTION APPLIQUÉE ICI
+        detailsButtons.forEach(button => {
             button.addEventListener('click', function() {
                 currentProduct = this.getAttribute('data-product');
                 currentPrice = parseFloat(this.getAttribute('data-price'));
-                quantity = 1;
-                deliveryType = "Standard";
-                deliveryCost = 0;
                 
                 // Mettre à jour les éléments du modal
-                productTitle.textContent = currentProduct;
-                formProduct.value = currentProduct;
-                formPrice.value = currentPrice;
-                quantityInput.value = quantity;
-                deliveryTypeSelect.value = deliveryType;
+                document.getElementById('details-product-title').textContent = currentProduct;
+                document.getElementById('product-description').textContent = this.getAttribute('data-description');
                 
-                // Mettre à jour le récapitulatif
-                updateOrderSummary();
+                // CORRECTION: Utilisation de try/catch pour le parsing JSON
+                try {
+                    // Remplir les spécifications
+                    const specsContainer = document.getElementById('product-specs');
+                    specsContainer.innerHTML = '';
+                    const specs = JSON.parse(this.getAttribute('data-specs'));
+                    specs.forEach(spec => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<i class="${spec.icon}"></i> ${spec.text}`;
+                        specsContainer.appendChild(li);
+                    });
+                    
+                    // Remplir les avis
+                    const reviewsContainer = document.getElementById('product-reviews');
+                    reviewsContainer.innerHTML = '';
+                    const reviews = JSON.parse(this.getAttribute('data-reviews'));
+                    reviews.forEach(review => {
+                        const reviewEl = document.createElement('div');
+                        reviewEl.className = 'review';
+                        reviewEl.innerHTML = `
+                            <div class="review-header">
+                                <span class="review-author">${review.author}</span>
+                                <span class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</span>
+                            </div>
+                            <div class="review-content">${review.content}</div>
+                        `;
+                        reviewsContainer.appendChild(reviewEl);
+                    });
+                } catch (e) {
+                    console.error("Erreur de parsing des données:", e);
+                    alert("Une erreur est survenue lors du chargement des détails du produit.");
+                }
                 
                 // Ouvrir le modal
-                orderModal.style.display = 'flex';
+                detailsModal.style.display = 'flex';
+            });
+        });
+
+        // Ouvrir le modal de commande
+        orderButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                openOrderModal(
+                    this.getAttribute('data-product'), 
+                    parseFloat(this.getAttribute('data-price'))
+                );
             });
         });
         
-        // Fermer le modal
+        // Ouvrir le modal de commande depuis les détails
+        orderFromDetailsBtn.addEventListener('click', () => {
+            detailsModal.style.display = 'none';
+            openOrderModal(currentProduct, currentPrice);
+        });
+        
+        function openOrderModal(product, price) {
+            currentProduct = product;
+            currentPrice = price;
+            quantity = 1;
+            deliveryType = "Standard";
+            deliveryCost = 0;
+            
+            // Mettre à jour les éléments du modal
+            document.getElementById('product-title').textContent = currentProduct;
+            document.getElementById('form-product').value = currentProduct;
+            document.getElementById('form-price').value = currentPrice;
+            document.getElementById('quantity').value = quantity;
+            document.getElementById('delivery-type').value = deliveryType;
+            
+            // Mettre à jour le récapitulatif
+            updateOrderSummary();
+            
+            // Ouvrir le modal
+            orderModal.style.display = 'flex';
+        }
+        
+        // Fermer les modals
+        closeDetailsBtn.addEventListener('click', () => {
+            detailsModal.style.display = 'none';
+        });
+        
         closeOrderBtn.addEventListener('click', () => {
             orderModal.style.display = 'none';
         });
         
         window.addEventListener('click', (e) => {
+            if (e.target === detailsModal) {
+                detailsModal.style.display = 'none';
+            }
             if (e.target === orderModal) {
                 orderModal.style.display = 'none';
             }
         });
         
+        // Navigation par onglets
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Mettre à jour les boutons d'onglets
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Mettre à jour les contenus d'onglets
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
         // Écouteurs pour les changements de quantité et de livraison
+        const quantityInput = document.getElementById('quantity');
+        const deliveryTypeSelect = document.getElementById('delivery-type');
+        
         quantityInput.addEventListener('change', function() {
             quantity = parseInt(this.value) || 1;
             if (quantity < 1) quantity = 1;
@@ -1255,11 +1595,12 @@
             totalPrice = (currentPrice * quantity) + deliveryCost;
             
             // Mettre à jour l'affichage
-            productNameRecap.textContent = currentProduct;
-            quantityDisplay.textContent = quantity;
-            unitPrice.textContent = currentPrice.toFixed(2).replace('.', ',');
+            document.getElementById('product-name-recap').textContent = currentProduct;
+            document.getElementById('quantity-display').textContent = quantity;
+            document.getElementById('unit-price').textContent = currentPrice.toFixed(2).replace('.', ',');
             
             // Mettre à jour l'affichage des frais de livraison
+            const deliveryCostElement = document.getElementById('delivery-cost');
             if (deliveryCost === 0) {
                 deliveryCostElement.textContent = "Gratuite";
                 deliveryCostElement.className = "summary-price free-shipping";
@@ -1268,28 +1609,17 @@
                 deliveryCostElement.className = "summary-price express-shipping";
             }
             
-            totalPriceElement.textContent = totalPrice.toFixed(2).replace('.', ',') + "€";
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2).replace('.', ',') + "€";
             
             // Mettre à jour les champs cachés du formulaire
-            formDeliveryType.value = deliveryType;
-            formTotal.value = totalPrice.toFixed(2);
+            document.getElementById('form-delivery-type').value = deliveryType;
+            document.getElementById('form-total').value = totalPrice.toFixed(2);
         }
         
         // Gestion de la soumission du formulaire
         document.getElementById('order-form').addEventListener('submit', function(e) {
             // Validation supplémentaire si nécessaire
             // On laisse FormSubmit gérer la redirection
-            // Vous pouvez ajouter ici une validation supplémentaire si nécessaire
-        });
-        
-        // Mise à jour du nom de la marque
-        document.addEventListener('DOMContentLoaded', function() {
-            const brandElements = document.querySelectorAll('.logo h1, .footer-column h3, .copyright');
-            brandElements.forEach(el => {
-                if (el.textContent.includes('Chaleur Express')) {
-                    el.textContent = el.textContent.replace('Chaleur Express', 'Express Bois');
-                }
-            });
         });
         
         // Lightbox functionality
@@ -1362,19 +1692,20 @@
             lightboxImg.src = imagesArray[currentImageIndex];
             lightboxCounter.textContent = `${currentImageIndex + 1}/${imagesArray.length}`;
         }
-    </script>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6882b38f8439cd19247f137c/1j0v8qqan';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
+    });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6882b38f8439cd19247f137c/1j0v8qqan';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 </html>
