@@ -243,46 +243,6 @@
             z-index: 1;
         }
 
-        /* MENU FIXE EN BAS */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-around;
-            padding: 15px 0;
-            z-index: 100;
-            border-top: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .nav-btn {
-            background: none;
-            border: none;
-            color: var(--dark);
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 8px 20px;
-            border-radius: 30px;
-        }
-
-        .nav-btn:hover {
-            background-color: rgba(139, 69, 19, 0.1);
-            color: var(--primary);
-        }
-
-        .nav-btn i {
-            font-size: 1.3rem;
-        }
-
         /* Animations */
         @keyframes scaleUp {
             0% {
@@ -340,33 +300,30 @@
             }
         }
 
-
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
+        .order-number-box {
+            background-color: #f8f9fa;
+            border: 2px dashed var(--accent, #E64A19);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 35px 0;
         }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
+        .order-number-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--dark, #3E2723);
         }
-
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+        .order-number-box strong {
+            font-size: 1.3rem;
+            color: var(--primary, #5D4037);
+            display: block;
+            margin-top: 8px;
+            word-break: break-all; /* Pour éviter que le numéro ne dépasse sur mobile */
         }
     </style>
+
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (inchangé) -->
     <header>
         <div class="logo">
             <i class="fas fa-fire-alt logo-icon"></i>
@@ -387,13 +344,17 @@
             <h2 class="confirmation-title">Commande Enregistrée !</h2>
             <p class="confirmation-subtitle">Merci pour votre confiance. Votre commande a été enregistrée avec succès.</p>
             
+            <!-- NOUVEAU : Boîte pour afficher le numéro de commande -->
+            <div id="order-number-container" class="order-number-box" style="display: none;">
+                <p>Veuillez conserver votre numéro de commande pour toute référence future :</p>
+                <strong id="order-number-display"></strong>
+            </div>
+
             <div class="confirmation-message">
                 <p><i class="fas fa-envelope email-icon"></i> <strong>Consultez votre boîte email</strong></p>
-                <p>Nous vous avons envoyé un email de confirmation avec les détails de votre commande.</p>
+                <p>Nous vous avons envoyé un email de confirmation avec les détails de votre commande (incluant ce numéro).</p>
                 <p>Veuillez vérifier votre boîte de réception (et vos spams) dans les prochaines minutes.</p>
             </div>
-            
-            <p>Notre équipe prépare déjà votre commande pour une expédition rapide.</p>
             
             <a href="index.html" class="btn-home">
                 <i class="fas fa-home"></i> Retour à l'accueil
@@ -401,30 +362,21 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (inchangé) -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
                 <h3>Express Bois</h3>
-                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
-            <!--
-                <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/+33756874215" class="social-link" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp"></i>
-                        </a>
-                </div>
-            -->    
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>  
             </div>
             <div class="footer-column">
                 <h3>Nos Produits</h3>
                 <ul>
-                    <li><a href="accessoires.html">Granulés de bois</a></li>
+                    <li><a href="details-granules-premium.html">Granulés de bois</a></li>
                     <li><a href="details-buches-nuit-charme.html">Bûches de nuit</a></li>
                     <li><a href="details-bois-fendu.html">Bois fendu</a></li>
                     <li><a href="details-bois-compresse.html">Briquettes compressées</a></li>
                     <li><a href="details-buches-jour-chene-charme.html">Bûches de jour</a></li>
-                    <li><a href="details-granules-premium.html">Granulés premium</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -442,39 +394,25 @@
         </div>
     </footer>
 
-    <!-- Menu fixe en bas -->
-     <!--
-    <nav class="bottom-nav">
-        <button class="nav-btn" onclick="location.href='index.html'">
-            <i class="fas fa-home"></i>
-            <span>Accueil</span>
-        </button>
-        <button class="nav-btn">
-            <i class="fas fa-tree"></i>
-            <span>Produits</span>
-        </button>
-        <button class="nav-btn">
-            <i class="fas fa-info-circle"></i>
-            <span>Infos</span>
-        </button>
-        <button class="nav-btn" onclick="location.href='contact.html'">
-            <i class="fas fa-phone-alt"></i>
-            <span>Contact</span>
-        </button>
-    </nav>
-    -->
-
+    <!-- NOUVEAU : Script pour récupérer et afficher le numéro de commande -->
     <script>
-        // Animation de l'icône de confirmation
         document.addEventListener('DOMContentLoaded', function() {
-            // Effet visuel pour l'icône de confirmation
-            const icon = document.querySelector('.confirmation-icon');
-            setTimeout(() => {
-                icon.style.animation = 'none';
-                setTimeout(() => {
-                    icon.style.animation = 'scaleUp 0.6s ease';
-                }, 10);
-            }, 1000);
+            // Récupérer le numéro de commande depuis le sessionStorage
+            const orderNumber = sessionStorage.getItem('lastOrderNumber');
+
+            // Si un numéro de commande existe...
+            if (orderNumber) {
+                const container = document.getElementById('order-number-container');
+                const display = document.getElementById('order-number-display');
+
+                // ...l'afficher dans l'élément prévu...
+                display.textContent = orderNumber;
+                // ...et rendre la boîte visible.
+                container.style.display = 'block';
+
+                // Optionnel : vider le sessionStorage pour ne pas l'afficher à nouveau si l'utilisateur recharge la page
+                // sessionStorage.removeItem('lastOrderNumber'); 
+            }
         });
     </script>
 </body>
