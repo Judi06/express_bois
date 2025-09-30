@@ -12,16 +12,23 @@
     <!-- End Google Tag Manager -->
 </head>
 <body>
-    <!-- Header -->
+    <!-- ==========================================================================
+       Header avec le lien vers la page panier
+       ========================================================================== -->
     <header>
         <div class="logo">
-            <i class="fas fa-fire-alt logo-icon"></i>
-            <h1>Express Bois</h1>
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
         </div>
-        <a href="tel:+33756874215" class="contact-badge" style="text-decoration: none; color: inherit; display: inherit;">
-            <i class="fas fa-phone-alt"></i>
-            <span>+33 756-87-42-15</span>
-        </a>
+        <div class="header-actions">
+            <!-- MODIFICATION : Le bouton est maintenant un lien vers panier.html -->
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -111,7 +118,7 @@
     <!-- Section Accessoires -->
     <section style="background:#EFEBE9 url('images/accessoires/accessoire.png') center/cover no-repeat;padding:80px 5%;text-align:center;color:#fff">
     <div style="max-width:700px;margin:auto;background:rgba(62,39,35,.75);border-radius:15px;padding:40px 30px">
-    <h2 style="font-size:2.2rem;margin-bottom:15px">Accessoires</h2>
+    <h2 style="font-size:2.2rem;margin-bottom:15px; color: white">Accessoires</h2>
     <p style="font-size:1.1rem;margin-bottom:25px">Optez pour des équipements de qualité pour votre confort et votre autonomie.</p>
     <a href="accessoires.html" style="background:#E64A19;color:#fff;padding:14px 35px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-block;transition:.3s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">Découvrir le catalogue</a>
     </div>
@@ -252,7 +259,7 @@
     <!-- Section Livraison France -->
     <section style="background: linear-gradient(135deg, #5D4037, #3E2723); color: white; padding: 60px 5%; text-align: center;">
         <div style="max-width: 900px; margin: auto;">
-            <h2 style="font-size: 2.2rem; margin-bottom: 20px;">📦 Livraison dans toute la France 🇫🇷</h2>
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">📦 Livraison dans toute la France 🇫🇷</h2>
             <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 20px;">
                 Express Bois vous livre à domicile du <strong>bois de chauffage (chêne, hêtre, charme, frêne)</strong>, des <strong>granulés en sacs de 15 kg</strong>, des <strong>bûches compressées</strong>, et des <strong>poêles à bois performants</strong>, partout en France.
             </p>
@@ -329,14 +336,12 @@
             <div class="footer-column">
                 <h3>Nos Produits</h3>
                 <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
                     <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
                     <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
                     <li><a href="details-bois-fendu.html">Bois fendu</a></li>
                     <li><a href="details-bois-compresse.html">Bois compressé</a></li>
-                    <li><a href="details-buches-jour.html">Bûches de jour</a></li>
-                    <li><a href="accessoires.html">Accessoires</a></li>
-                    <li><a href="details-buches-nuit-charme.html">Bûches de nuit - Charme</a></li>
-                    <li><a href="details-buches-jour-chene-charme.html">Bûches de jour - Chêne/Charme</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -698,6 +703,8 @@
             }, 3000);
         }
     </script>
+    
+    <script src="panier.js" defer></script>
     <!-- Tidio Implementation-->
 <script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
 </body>

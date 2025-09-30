@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Panier | Express Bois</title>
+    
+    <!-- Dépendances externes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Feuille de style centralisée -->
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="icon" type="image/png" href="express_bois_logo.png">
+</head>
+<body>
+    <!-- Header (inchangé ) -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Fil d'Ariane (inchangé) -->
+    <div class="breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a> > 
+        <span>Panier</span>
+    </div>
+
+    <!-- Contenu principal de la page Panier (inchangé) -->
+    <main class="cart-page-container">
+        <h1 class="page-title">Votre Panier</h1>
+
+        <div id="cart-wrapper">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-cart empty-icon"></i>
+                <h2>Votre panier est actuellement vide.</h2>
+                <p>Parcourez nos produits pour trouver votre bonheur !</p>
+                <a href="index.html#products" class="btn btn-primary">Découvrir nos produits</a>
+            </div>
+
+            <div class="cart-full" id="cart-full" style="display: none;">
+                <div class="cart-layout">
+                    <div class="cart-items-list">
+                        <div class="cart-items-header">
+                            <span>Produit</span>
+                            <span>Quantité</span>
+                            <span>Total partiel</span>
+                        </div>
+                        <div id="cart-items-container"></div>
+                    </div>
+
+                    <div class="cart-summary-and-form">
+                        <div class="cart-summary">
+                            <h2>Résumé de la commande</h2>
+                            <div class="summary-line">
+                                <span>Sous-total</span>
+                                <span id="summary-subtotal">0,00€</span>
+                            </div>
+                            <div class="summary-line">
+                                <span>Frais de livraison</span>
+                                <span id="summary-shipping">Calculés à l'étape suivante</span>
+                            </div>
+                            <div class="summary-line total">
+                                <span>Total</span>
+                                <span id="summary-total">0,00€</span>
+                            </div>
+                        </div>
+
+                        <!-- ========================================================================== -->
+                        <!-- MODIFICATION DANS LE FORMULAIRE CI-DESSOUS -->
+                        <!-- ========================================================================== -->
+                        <form id="order-form" action="https://formsubmit.co/contact@expressbois.com" method="POST">
+                            <h2>Informations de livraison</h2>
+                            
+                            <!-- Champs cachés pour FormSubmit -->
+                            <input type="hidden" name="_subject" value="Nouvelle commande Express Bois !">
+                            <!-- Mise à jour de l'URL de redirection -->
+                            <input type="hidden" name="_next" value="https://www.expressbois.com/confirmation.html">
+                            <input type="hidden" name="_captcha" value="false">
+                            
+                            <!-- NOUVEAU : Champ caché pour le numéro de commande -->
+                            <input type="hidden" id="order-number" name="Numéro de Commande" value="">
+                            
+                            <input type="hidden" name="Récapitulatif Commande" id="hidden-cart-summary">
+
+                            <!-- Champs du formulaire (inchangés ) -->
+                            <div class="form-group">
+                                <label for="name">Nom & Prénoms</label>
+                                <input type="text" id="name" name="Nom et Prénoms" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="Téléphone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Courriel électronique</label>
+                                <input type="email" id="email" name="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Pays</label>
+                                <input type="text" id="country" name="Pays" value="France" readonly>
+                            </div>
+                            <div class="form-group-inline">
+                                <div class="form-group">
+                                    <label for="city">Ville</label>
+                                    <input type="text" id="city" name="Ville" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal-code">Code Postal</label>
+                                    <input type="text" id="postal-code" name="Code Postal" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Adresse Complète</label>
+                                <input type="text" id="address" name="Adresse" placeholder="Numéro, rue, appartement..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Informations complémentaires (facultatif)</label>
+                                <textarea id="notes" name="Notes" rows="4" placeholder="Code porte, étage, instructions de livraison..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-order-btn">
+                                <i class="fas fa-lock"></i> Valider ma commande
+                            </button>
+                        </form>
+                        <!-- ========================================================================== -->
+                        <!-- FIN DE LA MODIFICATION -->
+                        <!-- ========================================================================== -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Express Bois</h3>
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Produits</h3>
+                <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="panier.js" defer></script>
+    <script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
+</body>
+</html>

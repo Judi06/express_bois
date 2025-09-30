@@ -10,16 +10,23 @@
 
 </head>
 <body>
-    <!-- Header -->
+    <!-- ==========================================================================
+       Header avec le lien vers la page panier
+       ========================================================================== -->
     <header>
         <div class="logo">
-            <i class="fas fa-fire-alt logo-icon"></i>
-            <h1>Express Bois</h1>
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
         </div>
-        <a href="tel:+33756874215" class="contact-badge" style="text-decoration: none; color: inherit; display: inherit;">
-            <i class="fas fa-phone-alt"></i>
-            <span>+33 756-87-42-15</span>
-        </a>
+        <div class="header-actions">
+            <!-- MODIFICATION : Le bouton est maintenant un lien vers panier.html -->
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
     </header>
 
     <!-- Navigation -->
@@ -366,12 +373,12 @@
             <div class="footer-column">
                 <h3>Nos Produits</h3>
                 <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
                     <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
                     <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
                     <li><a href="details-bois-fendu.html">Bois fendu</a></li>
-                    <li><a href="details-bois-compresse.html">Briquettes compressées</a></li>
-                    <li><a href="details-buches-jour.html">Bûches de jour</a></li>
-                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -437,6 +444,8 @@
             showCategory('all');
         });
     </script>
+    
+    <script src="panier.js" defer></script>
     <!-- Tidio Implementation-->
 <script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
 </body>

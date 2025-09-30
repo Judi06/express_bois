@@ -7,62 +7,67 @@
     
     <!-- Dépendances externes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Votre feuille de style centralisée (comme vous l'avez déjà fait ) -->
-    <link rel="stylesheet" href="style-produit.css"> 
+    <!-- Feuille de style centralisée -->
+    <link rel="stylesheet" href="style.css"> 
     
     <link rel="icon" type="image/png" href="express_bois_logo.png">
 </head>
 <body>
-    <!-- Header (inchangé) -->
+    <!-- Header avec le lien vers la page panier -->
     <header>
         <div class="logo">
-            <i class="fas fa-fire-alt logo-icon"></i>
-            <h1>Express Bois</h1>
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
         </div>
-        <a href="tel:+33756874215" class="contact-badge" style="text-decoration: none; color: inherit; display: inherit;">
-            <i class="fas fa-phone-alt"></i>
-            <span>+33 756-87-42-15</span>
-        </a>
+        <div class="header-actions">
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
     </header>
 
-    <!-- Fil d'Ariane (inchangé) -->
+    <!-- Fil d'Ariane -->
     <div class="breadcrumb">
         <a href="index.html"><i class="fas fa-home"></i> Accueil</a> > 
-        <a href="#">Nos produits</a> > 
+        <a href="index.html#products">Nos produits</a> > 
         <span>Bois Fendu - Mélange Feuillus</span>
     </div>
 
-    <!-- 
-      MODIFICATION PRINCIPALE : Ajout des attributs data-* pour le script.
-      Ces attributs contiennent toutes les informations spécifiques au produit.
-      Le script `main.js` les lira pour configurer le formulaire de commande.
-    -->
+    <!-- Détail du produit avec les attributs data-* -->
     <section class="product-detail"
+             data-product-id="bois-fendu-melange-01"
              data-product-name="Bois Fendu - Mélange Feuillus"
              data-product-price="77"
              data-product-unit="stère"
-             data-product-options='{"Longueur des bûches": ["25 cm", "33 cm", "50 cm"]}'>
+             data-product-image="images/bois fendu/bois_fendu_4.jpg">
         
         <div class="product-container">
+            <!-- Galerie d'images -->
             <div class="product-gallery">
+                <div class="main-image" id="main-image" style="background-image: url('images/bois fendu/bois_fendu_4.jpg' );"></div>
                 <div class="thumbnails">
-                    <div class="thumbnail active" style="background-image: url('images/bois fendu/bois_fendu_4.jpg');"></div>
-                    <div class="thumbnail" style="background-image: url('images/bois fendu/bois_fendu.jfif');"></div>
-                    <div class="thumbnail" style="background-image: url('images/bois fendu/bois_fendu_2.jpg');"></div>
-                    <div class="thumbnail" style="background-image: url('images/bois fendu/bois_fendu_3.jpg');"></div>
+                    <div class="thumbnail active" onclick="changeImage('images/bois fendu/bois_fendu_4.jpg')" style="background-image: url('images/bois fendu/bois_fendu_4.jpg');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/bois fendu/bois_fendu.jfif')" style="background-image: url('images/bois fendu/bois_fendu.jfif');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/bois fendu/bois_fendu_2.jpg')" style="background-image: url('images/bois fendu/bois_fendu_2.jpg');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/bois fendu/bois_fendu_3.jpg')" style="background-image: url('images/bois fendu/bois_fendu_3.jpg');"></div>
                 </div>
-                <div class="main-image" style="background-image: url('images/bois fendu/bois_fendu_4.jpg');"></div>
             </div>
             
+            <!-- Informations du produit -->
             <div class="product-info">
                 <h1 class="product-title">Bois Fendu - Mélange Feuillus</h1>
                 <p class="product-subtitle">Chêne, Hêtre, Frêne et Charme de qualité supérieure</p>
                 
                 <div class="product-price">
-                    <span>77€ / stère</span>
-                    <span class="old-price">90€</span>
-                    <span class="discount">-8%</span>
+                    <span id="current-price">77,00€</span>
+                    <span class="price-unit">/ stère</span>
                 </div>
                 
                 <p class="product-description">
@@ -83,18 +88,27 @@
                         <div class="spec-item"><i class="fas fa-certificate spec-icon"></i><div><strong>Certification</strong><p>PEFC - Forêts durables</p></div></div>
                     </div>
                 </div>
-                
+
+                <!-- Ajout du sélecteur pour les options -->
+                <div class="product-options">
+                    <label for="product-option-longueur">Longueur des bûches :</label>
+                    <select id="product-option-longueur" class="option-select">
+                        <option value="25 cm">25 cm</option>
+                        <option value="33 cm" selected>33 cm</option>
+                        <option value="50 cm">50 cm</option>
+                    </select>
+                </div>
+
                 <div class="quantity-control">
-                    <span>Quantité :</span>
-                    <button class="quantity-btn">-</button>
+                    <label for="quantity">Quantité :</label>
+                    <button class="quantity-btn" id="decrease-quantity">-</button>
                     <input type="number" class="quantity-input" id="quantity" value="1" min="1">
-                    <button class="quantity-btn">+</button>
-                    <span>(Stère)</span>
+                    <button class="quantity-btn" id="increase-quantity">+</button>
                 </div>
                 
                 <div class="actions">
-                    <button class="btn btn-primary" id="order-now">
-                        <i class="fas fa-shopping-bag"></i> Commander maintenant
+                    <button class="btn btn-primary add-to-cart-btn" id="add-to-cart-btn">
+                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                     </button>
                 </div>
                 
@@ -134,18 +148,18 @@
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img" style="background-image: url('images/bois_densifié/bois-densifié.webp');"></div>
+                <div class="product-img" style="background-image: url('images/granulés/granulés.png');"></div>
                 <div class="product-info-card">
-                    <h3>Briquettes Compressées</h3>
-                    <p>100% sciure de feuillus, haute densité énergétique, combustion 2-3h par bûche.</p>
-                    <div class="product-price-card">7,50€ / pack 10 bûches</div>
-                    <a href="details-bois-compresse.html" class="btn-details">Voir détails</a>
+                    <h3>Granulés de Bois Premium</h3>
+                    <p>100% résineux français, certification ENplus A1, faible taux de cendres.</p>
+                    <div class="product-price-card">5,50€ / sac 15kg</div>
+                    <a href="details-granules-premium.html" class="btn-details">Voir détails</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (inchangé) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -155,11 +169,12 @@
             <div class="footer-column">
                 <h3>Nos Produits</h3>
                 <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
                     <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
                     <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
                     <li><a href="details-bois-fendu.html">Bois fendu</a></li>
-                    <li><a href="details-bois-compresse.html">Briquettes compressées</a></li>
-                    <li><a href="details-buches-jour.html">Bûches de jour</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -177,23 +192,25 @@
         </div>
     </footer>
 
-    <!-- 
-      MODIFICATION : Le code du modal a été retiré.
-      Ce conteneur vide est maintenant le point d'ancrage où `main.js`
-      injectera le contenu de `modal-commande.html` au clic.
-    -->
-    <div class="modal" id="order-modal">
-        <!-- Le contenu du modal sera chargé ici par JavaScript -->
-    </div>
+    <div class="notification" id="notification"></div>
 
-    <!-- 
-      MODIFICATION : Le script interne a été supprimé.
-      Un seul appel vers le fichier JavaScript centralisé `main.js`.
-      L'attribut `defer` assure que le script s'exécute après le chargement du HTML.
-    -->
-    <script src="main.js" defer></script>
-    
-    <!-- Tidio Implementation (inchangé) -->
+    <!-- Script pour la galerie d'images et la logique du panier -->
+    <script>
+        // --- Galerie d'images ---
+        function changeImage(imageUrl) {
+            document.getElementById('main-image').style.backgroundImage = `url('${imageUrl}')`;
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+                if (thumb.style.backgroundImage.includes(imageUrl)) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+        // --- Logique du panier (sera dans un fichier séparé plus tard) ---
+        // (Le code JavaScript pour gérer l'ajout au panier sera placé ici ou dans un fichier externe)
+    </script>
+
+    <script src="panier.js" defer></script>
     <script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
 </body>
 </html>

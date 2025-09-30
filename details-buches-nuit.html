@@ -7,63 +7,67 @@
     
     <!-- Dépendances externes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Votre feuille de style centralisée -->
-    <link rel="stylesheet" href="style-produit.css"> 
+    <!-- Feuille de style centralisée -->
+    <link rel="stylesheet" href="style.css"> 
     
     <link rel="icon" type="image/png" href="express_bois_logo.png">
 </head>
 <body>
-    <!-- Header (inchangé ) -->
+    <!-- Header avec le lien vers la page panier -->
     <header>
         <div class="logo">
-            <i class="fas fa-fire-alt logo-icon"></i>
-            <h1>Express Bois</h1>
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
         </div>
-        <a href="tel:+33756874215" class="contact-badge" style="text-decoration: none; color: inherit; display: inherit;">
-            <i class="fas fa-phone-alt"></i>
-            <span>+33 756-87-42-15</span>
-        </a>
+        <div class="header-actions">
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
     </header>
 
-    <!-- Fil d'Ariane (inchangé) -->
+    <!-- Fil d'Ariane -->
     <div class="breadcrumb">
         <a href="index.html"><i class="fas fa-home"></i> Accueil</a> > 
-        <a href="#">Nos produits</a> > 
+        <a href="index.html#products">Nos produits</a> > 
         <span>Bûches de Nuit - Chêne/Hêtre</span>
     </div>
 
-    <!-- 
-      MODIFICATION : Attributs data-* spécifiques pour ce produit.
-      - Prix : 85
-      - Unité : stère
-      - Options : Longueurs de 33 et 50 cm.
-    -->
+    <!-- Détail du produit avec les attributs data-* -->
     <section class="product-detail"
+             data-product-id="buches-nuit-chene-hetre-01"
              data-product-name="Bûches de Nuit - Chêne/Hêtre"
              data-product-price="85"
              data-product-unit="stère"
-             data-product-options='{"Longueur des bûches": ["33 cm", "50 cm"]}'>
+             data-product-image="images/buche de nuit/buche_de_nuit_2.jpg">
         
         <div class="product-container">
+            <!-- Galerie d'images -->
             <div class="product-gallery">
+                <div class="main-image" id="main-image" style="background-image: url('images/buche de nuit/buche_de_nuit_2.jpg' );"></div>
                 <div class="thumbnails">
-                    <div class="thumbnail active" style="background-image: url('images/buche de nuit/buche_de_nuit.jfif');"></div>
-                    <div class="thumbnail" style="background-image: url('images/buche de nuit/buche_de_nuit_4.jfif');"></div>
-                    <div class="thumbnail" style="background-image: url('images/buche de nuit/buche_de_nuit_5.jpg');"></div>
-                    <div class="thumbnail" style="background-image: url('images/buche de nuit/buche_de_nuit_2.jpg');"></div>
+                    <div class="thumbnail active" onclick="changeImage('images/buche de nuit/buche_de_nuit_2.jpg')" style="background-image: url('images/buche de nuit/buche_de_nuit_2.jpg');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/buche de nuit/buche_de_nuit.jfif')" style="background-image: url('images/buche de nuit/buche_de_nuit.jfif');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/buche de nuit/buche_de_nuit_4.jfif')" style="background-image: url('images/buche de nuit/buche_de_nuit_4.jfif');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/buche de nuit/buche_de_nuit_5.jpg')" style="background-image: url('images/buche de nuit/buche_de_nuit_5.jpg');"></div>
                 </div>
-                <div class="main-image" style="background-image: url('images/buche de nuit/buche_de_nuit_2.jpg');"></div>
             </div>
             
+            <!-- Informations du produit -->
             <div class="product-info">
                 <h1 class="product-title">Bûches de Nuit - Chêne/Hêtre</h1>
                 <p class="product-subtitle">Combustion lente pour un chauffage nocturne optimal</p>
                 
                 <div class="product-price">
-                    <span>85€ / stère</span>
-                    <span class="old-price">95€</span>
-                    <span class="discount">-10%</span>
+                    <span id="current-price">85,00€</span>
+                    <span class="price-unit">/ stère</span>
                 </div>
                 
                 <p class="product-description">
@@ -84,18 +88,26 @@
                         <div class="spec-item"><i class="fas fa-certificate spec-icon"></i><div><strong>Certification</strong><p>PEFC - Forêts durables</p></div></div>
                     </div>
                 </div>
+
+                <div class="product-options">
+                    <label for="product-option-longueur">Longueur des bûches :</label>
+                    <select id="product-option-longueur" class="option-select">
+                        <option value="25 cm">25 cm</option>
+                        <option value="33 cm" selected>33 cm</option>
+                        <option value="50 cm">50 cm</option>
+                    </select>
+                </div>
                 
                 <div class="quantity-control">
-                    <span>Quantité :</span>
-                    <button class="quantity-btn">-</button>
+                    <label for="quantity">Quantité (stères) :</label>
+                    <button class="quantity-btn" id="decrease-quantity">-</button>
                     <input type="number" class="quantity-input" id="quantity" value="1" min="1">
-                    <button class="quantity-btn">+</button>
-                    <span>(Stère)</span>
+                    <button class="quantity-btn" id="increase-quantity">+</button>
                 </div>
                 
                 <div class="actions">
-                    <button class="btn btn-primary" id="order-now">
-                        <i class="fas fa-shopping-bag"></i> Commander maintenant
+                    <button class="btn btn-primary add-to-cart-btn" id="add-to-cart-btn">
+                        <i class="fas fa-cart-plus"></i> Ajouter au panier
                     </button>
                 </div>
                 
@@ -117,12 +129,12 @@
         <div class="section-title"><h2>Produits Similaires</h2></div>
         <div class="products-container">
             <div class="product-card">
-                <div class="product-img" style="background-image: url('images/bois fendu/bois_fendu_4.jpg');"></div>
+                <div class="product-img" style="background-image: url('images/buche de nuit/buche_de_nuit.jfif');"></div>
                 <div class="product-info-card">
-                    <h3>Bois Fendu - Mélange Feuillus</h3>
-                    <p>Chêne, Hêtre, Frêne et Charme. Séché naturellement 18 mois, prêt à l'emploi.</p>
-                    <div class="product-price-card">77€ / stère</div>
-                    <a href="details-bois-fendu.html" class="btn-details">Voir détails</a>
+                    <h3>Bûches de Nuit - Chêne/Hêtre</h3>
+                    <p>Combustion lente 8-10h, bois dur séché 18 mois, idéal pour chauffage nocturne.</p>
+                    <div class="product-price-card">85€ / stère</div>
+                    <a href="details-buches-nuit.html" class="btn-details">Voir détails</a>
                 </div>
             </div>
             <div class="product-card">
@@ -146,7 +158,7 @@
         </div>
     </section>
 
-    <!-- Footer (inchangé) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -156,11 +168,12 @@
             <div class="footer-column">
                 <h3>Nos Produits</h3>
                 <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
                     <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
                     <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
                     <li><a href="details-bois-fendu.html">Bois fendu</a></li>
-                    <li><a href="details-bois-compresse.html">Briquettes compressées</a></li>
-                    <li><a href="details-buches-jour.html">Bûches de jour</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -178,15 +191,24 @@
         </div>
     </footer>
 
-    <!-- Conteneur pour le Modal de Commande -->
-    <div class="modal" id="order-modal">
-        <!-- Le contenu du modal sera chargé ici par JavaScript -->
-    </div>
+    <div class="notification" id="notification"></div>
 
-    <!-- Script externe centralisé -->
-    <script src="main.js" defer></script>
-    
-    <!-- Tidio Implementation (inchangé) -->
+    <!-- Script pour la galerie d'images et la logique du panier -->
+    <script>
+        // --- Galerie d'images ---
+        function changeImage(imageUrl) {
+            document.getElementById('main-image').style.backgroundImage = `url('${imageUrl}')`;
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+                if (thumb.style.backgroundImage.includes(imageUrl)) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+        // --- Logique du panier (sera dans un fichier séparé plus tard) ---
+        // (Le code JavaScript pour gérer l'ajout au panier sera placé ici ou dans un fichier externe)
+    </script>
+    <script src="panier.js" defer></script>
     <script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
 </body>
 </html>
