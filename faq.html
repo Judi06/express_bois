@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Questions Fréquentes | Express Bois</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="express_bois_logo.png">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- ==========================================================================
+       Header avec le lien vers la page panier
+       ========================================================================== -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <!-- MODIFICATION : Le bouton est maintenant un lien vers panier.html -->
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a> > 
+        <span>FAQ - Questions Fréquentes</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="faq-content">
+        <h1 class="page-title">Questions Fréquentes</h1>
+        
+        <div class="faq-intro">
+            <p>Trouvez rapidement les réponses à vos questions sur nos produits, la livraison, les commandes et bien plus encore.</p>
+        </div>
+
+        <!-- Catégories FAQ -->
+        <div class="faq-categories">
+            <button class="category-btn active" onclick="showCategory('all')">Toutes les questions</button>
+            <button class="category-btn" onclick="showCategory('produits')">Nos produits</button>
+            <button class="category-btn" onclick="showCategory('commande')">Commande</button>
+            <button class="category-btn" onclick="showCategory('livraison')">Livraison</button>
+            <button class="category-btn" onclick="showCategory('stockage')">Stockage</button>
+        </div>
+
+        <!-- Section Produits -->
+        <div class="faq-section" data-category="produits">
+            <h2 class="section-title">
+                <i class="fas fa-tree"></i>
+                Questions sur nos produits
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quelle est la différence entre les granulés premium et standard ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Les granulés premium offrent un pouvoir calorifique supérieur (4,8 kWh/kg contre 4,2 kWh/kg) et produisent moins de cendres (moins de 0,5% contre 1%). Ils sont fabriqués à partir de sciures de feuillus nobles et garantissent une combustion plus propre et plus efficace.</p>
+                    <p>Les granulés standard, tout en respectant la norme DINplus, constituent un excellent rapport qualité-prix pour un usage quotidien avec un pouvoir calorifique de 4,2 kWh/kg.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quelle essence de bois choisir pour mon poêle ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Le choix dépend de votre usage :</p>
+                    <ul>
+                        <li><strong>Chêne et Hêtre :</strong> Combustion lente, idéal pour les bûches de nuit (8-10h)</li>
+                        <li><strong>Frêne et Charme :</strong> Montée rapide en température, parfait pour les bûches de jour</li>
+                        <li><strong>Mélange feuillus :</strong> Polyvalent, bon compromis pour tous usages</li>
+                    </ul>
+                    <p>Tous nos bois sont séchés naturellement pendant 18 mois minimum et certifiés PEFC.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Que sont les briquettes compressées ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Les briquettes compressées sont fabriquées à partir de 100% sciure de feuillus, sans additifs ni liants chimiques. Elles offrent plusieurs avantages :</p>
+                    <ul>
+                        <li>Haute densité énergétique (4,8 kWh/kg)</li>
+                        <li>Combustion longue et régulière (2-3h par bûche)</li>
+                        <li>Très peu de cendres (moins de 1%)</li>
+                        <li>Stockage facile et propre</li>
+                        <li>Taux d'humidité très faible (moins de 10%)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment vérifier la qualité du bois de chauffage ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Plusieurs indicateurs permettent de vérifier la qualité :</p>
+                    <ul>
+                        <li><strong>Taux d'humidité :</strong> Doit être inférieur à 20% (nous garantissons moins de 20%)</li>
+                        <li><strong>Son :</strong> Le bois sec produit un son clair quand on frappe deux bûches</li>
+                        <li><strong>Aspect :</strong> Écorce qui se détache, fentes radiales visibles</li>
+                        <li><strong>Poids :</strong> Le bois sec est plus léger</li>
+                        <li><strong>Odeur :</strong> Absence d'odeur de moisissure</li>
+                    </ul>
+                    <p>Tous nos produits sont contrôlés à l'humidimètre et accompagnés d'un certificat de qualité.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Commande -->
+        <div class="faq-section" data-category="commande">
+            <h2 class="section-title">
+                <i class="fas fa-shopping-cart"></i>
+                Questions sur les commandes
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment passer une commande ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Vous pouvez commander de plusieurs façons :</p>
+                    <ul>
+                        <li><strong>En ligne :</strong> Directement sur notre site web, disponible 24h/24</li>
+                        <li><strong>Par téléphone :</strong> +33 756-87-42-15 (Lun-Ven 9h-18h)</li>
+                        <li><strong>Par email :</strong> contact@expressbois.com</li>
+                    </ul>
+                    <p>Chaque commande fait l'objet d'un accusé de réception par email dans les 24h.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quels sont les moyens de paiement acceptés ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous acceptons plusieurs moyens de paiement sécurisés :</p>
+                    <ul>
+                        <li>Carte bancaire (Visa, Mastercard, CB)</li>
+                        <li>Virement bancaire</li>
+                        <li>Chèque (à l'ordre de Express Bois)</li>
+                        <li>Paiement à la livraison (chèque ou espèces, max 1000€)</li>
+                        <li>Paiement en 3 fois sans frais (commandes > 300€)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Puis-je modifier ou annuler ma commande ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, vous pouvez modifier ou annuler votre commande jusqu'à 48h avant la livraison prévue. Contactez-nous rapidement :</p>
+                    <ul>
+                        <li>Par téléphone : +33 756-87-42-15</li>
+                        <li>Par email : contact@expressbois.com</li>
+                    </ul>
+                    <p>Passé ce délai, la commande ne peut plus être modifiée car elle est en cours de préparation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Proposez-vous des tarifs dégressifs ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous proposons des avantages pour les commandes importantes :</p>
+                    <ul>
+                        <li><strong>Livraison gratuite :</strong> À partir de 3 stères ou 500€ de granulés</li>
+                        <li><strong>Remises quantité :</strong> À partir de 5 stères (nous consulter)</li>
+                        <li><strong>Tarifs professionnels :</strong> Pour les gîtes, restaurants, collectivités</li>
+                        <li><strong>Abonnement annuel :</strong> Livraisons programmées avec remise</li>
+                    </ul>
+                    <p>Contactez-nous pour un devis personnalisé.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Livraison -->
+        <div class="faq-section" data-category="livraison">
+            <h2 class="section-title">
+                <i class="fas fa-truck"></i>
+                Questions sur la livraison
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quels sont les délais de livraison ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nos délais de livraison standard sont :</p>
+                    <ul>
+                        <li><strong>48 à 72h :</strong> Pour les produits en stock</li>
+                        <li><strong>24h :</strong> Livraison express (+25€)</li>
+                        <li><strong>5 à 7 jours :</strong> En période de forte demande (octobre-février)</li>
+                    </ul>
+                    <p>Les délais courent à partir de la confirmation de commande et du paiement. Nous vous prévenons par SMS la veille de la livraison.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Dans quelles zones livrez-vous ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous livrons dans toute la France métropolitaine. Les frais de livraison varient selon la zone :</p>
+                    <ul>
+                        <li><strong>Zone 1 (50km) :</strong> Gratuit à partir de 3 stères</li>
+                        <li><strong>Zone 2 (100km) :</strong> 35€ (gratuit à partir de 5 stères)</li>
+                        <li><strong>Zone 3 (France) :</strong> 65€ (gratuit à partir de 8 stères)</li>
+                    </ul>
+                    <p>Vérifiez votre zone de livraison avec notre outil en ligne.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment se déroule la livraison ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Notre service de livraison comprend :</p>
+                    <ul>
+                        <li>Livraison au rez-de-chaussée devant votre domicile</li>
+                        <li>Déchargement inclus jusqu'à 20m du camion</li>
+                        <li>Rangement possible dans votre abri (supplément selon distance)</li>
+                        <li>Nettoyage de la zone de livraison</li>
+                    </ul>
+                    <p>Vous devez être présent ou désigner une personne majeure pour réceptionner la marchandise.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Que faire si je ne suis pas présent lors de la livraison ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>En cas d'absence lors de la livraison :</p>
+                    <ul>
+                        <li>Le livreur tentera de vous joindre par téléphone</li>
+                        <li>Une nouvelle livraison sera programmée (frais supplémentaires)</li>
+                        <li>Vous pouvez désigner une personne de confiance majeure</li>
+                        <li>Possibilité de livraison chez un voisin (avec accord préalable)</li>
+                    </ul>
+                    <p>Nous vous conseillons de prévoir votre présence ou celle d'un proche.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Stockage -->
+        <div class="faq-section" data-category="stockage">
+            <h2 class="section-title">
+                <i class="fas fa-warehouse"></i>
+                Questions sur le stockage
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment bien stocker mon bois de chauffage ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Pour conserver la qualité de votre bois :</p>
+                    <ul>
+                        <li><strong>Lieu sec et ventilé :</strong> Abri, garage, ou extérieur avec bâche</li>
+                        <li><strong>Surélevé :</strong> Sur palettes ou chevrons pour éviter l'humidité du sol</li>
+                        <li><strong>Aéré :</strong> Laisser de l'espace entre les rangées</li>
+                        <li><strong>Protégé :</strong> De la pluie directe mais pas hermétiquement</li>
+                        <li><strong>Accessible :</strong> Pour faciliter l'utilisation quotidienne</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Combien de place prévoir pour stocker un stère ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Un stère de bois représente :</p>
+                    <ul>
+                        <li><strong>Bûches 50cm :</strong> 1m³ (1m x 1m x 1m)</li>
+                        <li><strong>Bûches 33cm :</strong> 0,8m³ environ</li>
+                        <li><strong>Bûches 25cm :</strong> 0,7m³ environ</li>
+                    </ul>
+                    <p>Prévoyez un espace supplémentaire de 20% pour la ventilation et l'accessibilité. Un abri de 3m² peut accueillir environ 3-4 stères.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Puis-je stocker le bois à l'extérieur ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, le stockage extérieur est possible avec quelques précautions :</p>
+                    <ul>
+                        <li>Utiliser une bâche imperméable mais respirante</li>
+                        <li>Ne pas couvrir complètement les côtés (ventilation)</li>
+                        <li>Surélever le tas sur palettes ou chevrons</li>
+                        <li>Choisir un endroit ensoleillé et ventilé</li>
+                        <li>Éviter les zones humides ou mal drainées</li>
+                    </ul>
+                    <p>Le bois bien sec peut rester dehors sans problème s'il est correctement protégé.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment stocker les granulés de bois ?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Les granulés nécessitent un stockage particulièrement soigné :</p>
+                    <ul>
+                        <li><strong>Lieu absolument sec :</strong> Garage, cave sèche, local technique</li>
+                        <li><strong>Sur palettes :</strong> Éviter le contact direct avec le sol</li>
+                        <li><strong>Sacs intacts :</strong> Ne pas ouvrir avant utilisation</li>
+                        <li><strong>Température stable :</strong> Éviter les variations importantes</li>
+                        <li><strong>Ventilation :</strong> Éviter les espaces confinés</li>
+                    </ul>
+                    <p>Les granulés sont très sensibles à l'humidité et peuvent se dégrader rapidement si mal stockés.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section d'aide -->
+        <div class="contact-help">
+            <h3>Vous ne trouvez pas la réponse à votre question ?</h3>
+            <p>Notre équipe est à votre disposition pour vous aider et vous conseiller</p>
+            <div class="contact-buttons">
+                <a href="tel:0123456789" class="contact-btn">
+                    <i class="fas fa-phone"></i>
+                    +33 756-87-42-15
+                </a>
+                <a href="mailto:contact@expressbois.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nous écrire
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Express Bois</h3>
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Produits</h3>
+                <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fonction pour basculer l'affichage des réponses FAQ
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            
+            // Fermer toutes les autres FAQ ouvertes
+            document.querySelectorAll('.faq-question.active').forEach(q => {
+                if (q !== element) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Basculer la FAQ actuelle
+            element.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+
+        // Fonction pour filtrer par catégorie
+        function showCategory(category) {
+            // Mettre à jour les boutons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Afficher/masquer les sections
+            document.querySelectorAll('.faq-section').forEach(section => {
+                if (category === 'all' || section.dataset.category === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            
+            // Fermer toutes les FAQ ouvertes
+            document.querySelectorAll('.faq-question.active').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('active');
+            });
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            showCategory('all');
+        });
+    </script>
+    
+    <script src="panier.js" defer></script>
+    <!-- Tidio Implementation-->
+<script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
+</body>
+</html>
+

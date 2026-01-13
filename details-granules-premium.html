@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granulés de Bois Premium | Express Bois</title>
+    
+    <!-- Dépendances externes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Feuille de style centralisée -->
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="icon" type="image/png" href="express_bois_logo.png">
+</head>
+<body>
+    <!-- Header avec le lien vers la page panier -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a> > 
+        <a href="index.html#products">Nos produits</a> > 
+        <span>Granulés de Bois Premium</span>
+    </div>
+
+    <!-- Détail du produit avec les attributs data-* -->
+    <section class="product-detail"
+             data-product-id="granules-premium-01"
+             data-product-name="Granulés de Bois Premium"
+             data-product-price="5.50"
+             data-product-unit="sac de 15kg"
+             data-product-image="images/granulés/granulés.png">
+        
+        <div class="product-container">
+            <!-- Galerie d'images -->
+            <div class="product-gallery">
+                <div class="main-image" id="main-image" style="background-image: url('images/granulés/granulés.png' );"></div>
+                <div class="thumbnails">
+                    <div class="thumbnail active" onclick="changeImage('images/granulés/granulés.png')" style="background-image: url('images/granulés/granulés.png');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/granulés/granulés-2.jpg')" style="background-image: url('images/granulés/granulés-2.jpg');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/granulés/granulés-3.png')" style="background-image: url('images/granulés/granulés-3.png');"></div>
+                    <div class="thumbnail" onclick="changeImage('images/granulés/granulés-4.jpg')" style="background-image: url('images/granulés/granulés-4.jpg');"></div>
+                </div>
+            </div>
+            
+            <!-- Informations du produit -->
+            <div class="product-info">
+                <h1 class="product-title">Granulés de Bois Premium</h1>
+                <p class="product-subtitle">Haute performance pour poêles à granulés</p>
+                
+                <div class="product-price">
+                    <span id="current-price">5,50€</span>
+                    <span class="price-unit">/ sac de 15kg</span>
+                </div>
+                
+                <p class="product-description">
+                    Nos granulés de bois premium sont fabriqués à partir de sciure de bois résineux 100% naturelle, sans additifs ni liants. 
+                    Avec un pouvoir calorifique exceptionnel et un faible taux de cendres (moins de 0.5%), ils garantissent une combustion 
+                    optimale et un rendement énergétique maximal pour votre poêle à granulés.
+                </p>
+                
+                <div class="product-specs">
+                    <h3 class="specs-title">Caractéristiques techniques</h3>
+                    <div class="specs-grid">
+                        <div class="spec-item"><i class="fas fa-fire spec-icon"></i><div><strong>Pouvoir calorifique</strong><p>5,2 kWh/kg</p></div></div>
+                        <div class="spec-item"><i class="fas fa-tint spec-icon"></i><div><strong>Taux d'humidité</strong><p>Moins de 8%</p></div></div>
+                        <div class="spec-item"><i class="fas fa-weight spec-icon"></i><div><strong>Poids du sac</strong><p>15 kg</p></div></div>
+                        <div class="spec-item"><i class="fas fa-box spec-icon"></i><div><strong>Palette complète</strong><p>72 sacs (1 tonne)</p></div></div>
+                        <div class="spec-item"><i class="fas fa-certificate spec-icon"></i><div><strong>Certification</strong><p>ENplus A1, DINplus</p></div></div>
+                        <div class="spec-item"><i class="fas fa-tree spec-icon"></i><div><strong>Origine</strong><p>Bois français PEFC</p></div></div>
+                    </div>
+                </div>
+
+                <!-- PAS D'OPTIONS POUR CE PRODUIT -->
+                
+                <div class="quantity-control">
+                    <label for="quantity">Quantité (sacs) :</label>
+                    <button class="quantity-btn" id="decrease-quantity">-</button>
+                    <input type="number" class="quantity-input" id="quantity" value="1" min="1">
+                    <button class="quantity-btn" id="increase-quantity">+</button>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn btn-primary add-to-cart-btn" id="add-to-cart-btn">
+                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                    </button>
+                </div>
+                
+                <div class="delivery-info">
+                    <div class="delivery-header"><i class="fas fa-truck delivery-icon"></i><h3 class="delivery-title">Livraison rapide et sécurisée</h3></div>
+                    <div class="delivery-content">
+                        <div class="delivery-item"><i class="fas fa-check-circle"></i><div>Livraison sous 48h partout en France</div></div>
+                        <div class="delivery-item"><i class="fas fa-euro-sign"></i><div>Livraison gratuite à partir de 500€ d'achat</div></div>
+                        <div class="delivery-item"><i class="fas fa-box-open"></i><div>Livraison en palette sécurisée jusqu'à chez vous</div></div>
+                        <div class="delivery-item"><i class="fas fa-recycle"></i><div>Emballages recyclables et éco-responsables</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Produits Similaires (inchangée) -->
+    <section class="related-products">
+        <div class="section-title"><h2>Produits Similaires</h2></div>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche de nuit/buche_de_nuit.jfif');"></div>
+                <div class="product-info-card">
+                    <h3>Bûches de Nuit - Chêne/Hêtre</h3>
+                    <p>Combustion lente 8-10h, bois dur séché 18 mois, idéal pour chauffage nocturne.</p>
+                    <div class="product-price-card">85€ / stère</div>
+                    <a href="details-buches-nuit.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche de jour/buche_de_jour_2.png');"></div>
+                <div class="product-info-card">
+                    <h3>Bûches de Jour - Hêtre/Frêne</h3>
+                    <p>Combustion rapide et intense, montée en température rapide, bois G1.</p>
+                    <div class="product-price-card">78€ / stère</div>
+                    <a href="details-buches-jour.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/granulés/granulés.png');"></div>
+                <div class="product-info-card">
+                    <h3>Granulés de Bois Premium</h3>
+                    <p>100% résineux français, certification ENplus A1, faible taux de cendres.</p>
+                    <div class="product-price-card">5,50€ / sac 15kg</div>
+                    <a href="details-granules-premium.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Express Bois</h3>
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Produits</h3>
+                <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <div class="notification" id="notification"></div>
+
+    <!-- Script pour la galerie d'images et la logique du panier -->
+    <script>
+        // --- Galerie d'images ---
+        function changeImage(imageUrl) {
+            document.getElementById('main-image').style.backgroundImage = `url('${imageUrl}')`;
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+                if (thumb.style.backgroundImage.includes(imageUrl)) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+        // --- Logique du panier (sera dans un fichier séparé plus tard) ---
+        // (Le code JavaScript pour gérer l'ajout au panier sera placé ici ou dans un fichier externe)
+    </script>
+
+    <script src="panier.js" defer></script>
+    <script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
+</body>
+</html>

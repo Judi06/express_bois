@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de commande | Express Bois</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="express_bois_logo.png">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Header avec le lien vers la page panier -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Section Confirmation -->
+    <section class="confirmation-section">
+        <div class="confirmation-card">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="confirmation-title">Commande Enregistrée !</h2>
+            <p class="confirmation-subtitle">Merci pour votre confiance. Votre commande a été enregistrée avec succès.</p>
+            
+            <!-- NOUVEAU : Boîte pour afficher le numéro de commande -->
+            <div id="order-number-container" class="order-number-box" style="display: none;">
+                <p>Veuillez conserver votre numéro de commande pour toute référence future :</p>
+                <strong id="order-number-display"></strong>
+            </div>
+
+            <div class="confirmation-message">
+                <p><i class="fas fa-envelope email-icon"></i> <strong>Consultez votre boîte email</strong></p>
+                <p>Nous vous avons envoyé un email de confirmation avec les détails de votre commande (incluant ce numéro).</p>
+                <p>Veuillez vérifier votre boîte de réception (et vos spams) dans les prochaines minutes.</p>
+            </div>
+            
+            <a href="index.html" class="btn-home">
+                <i class="fas fa-home"></i> Retour à l'accueil
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Express Bois</h3>
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Produits</h3>
+                <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="panier.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Récupère les éléments HTML où afficher les informations
+            const orderNumberContainer = document.getElementById('order-number-container');
+            const orderNumberDisplay = document.getElementById('order-number-display');
+
+            // Tente de récupérer le numéro de commande depuis le sessionStorage
+            const lastOrderNumber = sessionStorage.getItem('lastOrderNumber');
+
+            // Si un numéro de commande a été trouvé...
+            if (lastOrderNumber && orderNumberDisplay && orderNumberContainer) {
+                // Affiche le numéro dans l'élément prévu
+                orderNumberDisplay.textContent = lastOrderNumber;
+                // Rend la boîte visible
+                orderNumberContainer.style.display = 'block';
+            }
+
+            // Il est recommandé de supprimer le numéro du sessionStorage après l'avoir affiché
+            // pour éviter qu'il ne réapparaisse si l'utilisateur recharge la page plus tard.
+            // Cependant, pour permettre un rechargement simple, on peut le laisser.
+            // Pour le supprimer :
+            // sessionStorage.removeItem('lastOrderNumber');
+        });
+    </script>
+</body>
+</html>

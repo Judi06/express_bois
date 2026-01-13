@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Bois | Votre fournisseur de bois de chauffage en France</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="express_bois_logo.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Tag Manager -->
+    <script type="text/javascript"> adroll_adv_id = "WS7DWAY67FEX7ERZ4YUV77"; adroll_pix_id = "HOGYE7LZKFAEPLVE7ARBAQ"; adroll_version = "2.0";  (function(w, d, e, o, a) { w.__adroll_loaded = true; w.adroll = w.adroll || []; w.adroll.f = [ 'setProperties', 'identify', 'track', 'identify_email', 'get_cookie' ]; var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js"; for (a = 0; a < w.adroll.f.length; a++) { w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) { return function() { w.adroll.push([ n, arguments ]) } })(w.adroll.f[a]) }  e = d.createElement('script'); o = d.getElementsByTagName('script')[0]; e.async = 1; e.src = roundtripUrl; o.parentNode.insertBefore(e, o); })(window, document); adroll.track("pageView"); </script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- ==========================================================================
+       Header avec le lien vers la page panier
+       ========================================================================== -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <i class="fas fa-fire-alt logo-icon"></i>
+                <h1>Express Bois</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <!-- MODIFICATION : Le bouton est maintenant un lien vers panier.html -->
+            <a href="panier.html" class="cart-button" id="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-quantity-badge" id="cart-quantity-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Votre confort, notre priorité</h2>
+        <p>Bois de chauffage de qualité supérieure, livré directement chez vous partout en France</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" id="open-delivery">Vérifiez la livraison</button>
+            <button class="btn btn-secondary" id="open-calculator">Calculer mes besoins</button>
+        </div>
+    </section>
+
+    <!-- Section Produits -->
+    <section class="products">
+        <div class="section-title">
+            <h2>Nos Produits</h2>
+            <p>Découvrez notre gamme complète de bois de chauffage</p>
+        </div>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/granulés/granulés.png');"></div>
+                <div class="product-info">
+                    <h3>Granulés de Bois Premium</h3>
+                    <p>100% résineux français, certification ENplus A1, faible taux de cendres (<0,5%).</p>
+                    <div class="product-price">5,50€ / sac 15kg</div>
+                    <a href="details-granules-premium.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ nuit/buche_de_nuit.jfif');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Nuit - Chêne/Hêtre</h3>
+                    <p>Combustion lente 8-10h, bois dur séché 18 mois, idéal pour chauffage nocturne.</p>
+                    <div class="product-price">85€ / stère</div>
+                    <a href="details-buches-nuit.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/bois\ fendu/bois_fendu_4.jpg');"></div>
+                <div class="product-info">
+                    <h3>Bois Fendu - Mélange Feuillus</h3>
+                    <p>Chêne, Hêtre, Frêne et Charme. Séché naturellement 18 mois, prêt à l'emploi.</p>
+                    <div class="product-price">77€ / stère</div>
+                    <a href="details-bois-fendu.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/bois_densifié/bois-densifié.webp');"></div>
+                <div class="product-info">
+                    <h3>Bois Compressé</h3>
+                    <p>100% sciure de feuillus compressée, haute densité énergétique, combustion 2-3h par bûche.</p>
+                    <div class="product-price">7,50€ / pack 10 bûches</div>
+                    <a href="details-bois-compresse.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ jour/buche_de_jour_2.png');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Jour - Hêtre/Frêne</h3>
+                    <p>Combustion rapide et intense, montée en température rapide, bois G1.</p>
+                    <div class="product-price">78€ / stère</div>
+                    <a href="details-buches-jour.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ nuit/buche_de_nuit_1.png');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Nuit - Charme</h3>
+                    <p>Charme pur, combustion ultra-lente 10-12h, bois dur premium pour chauffage nocturne prolongé.</p>
+                    <div class="product-price">82€ / stère</div>
+                    <a href="details-buches-nuit-charme.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('images/buche\ de\ jour/buche_jour_chene_charme.jfif');"></div>
+                <div class="product-info">
+                    <h3>Bûches de Jour - Chêne/Charme</h3>
+                    <p>Mélange chêne et charme, montée rapide en température, combustion intense et durable.</p>
+                    <div class="product-price">76€ / stère</div>
+                    <a href="details-buches-jour-chene-charme.html" class="btn-details">Voir détails</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Accessoires -->
+    <section style="background:#EFEBE9 url('images/accessoires/accessoire.png') center/cover no-repeat;padding:80px 5%;text-align:center;color:#fff">
+    <div style="max-width:700px;margin:auto;background:rgba(62,39,35,.75);border-radius:15px;padding:40px 30px">
+    <h2 style="font-size:2.2rem;margin-bottom:15px; color: white">Accessoires</h2>
+    <p style="font-size:1.1rem;margin-bottom:25px">Optez pour des équipements de qualité pour votre confort et votre autonomie.</p>
+    <a href="accessoires.html" style="background:#E64A19;color:#fff;padding:14px 35px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-block;transition:.3s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">Découvrir le catalogue</a>
+    </div>
+    </section>
+
+    <!-- Section Pourquoi Nous Choisir -->
+    <section class="why-us">
+        <div class="section-title">
+            <h2>Pourquoi Nous Choisir</h2>
+            <p>L'excellence du service et la qualité du produit</p>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-truck feature-icon"></i>
+                <h3>Livraison Rapide</h3>
+                <p>Livraison sous 48h partout en France par nos transporteurs partenaires</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-tree feature-icon"></i>
+                <h3>Bois Durable</h3>
+                <p>Bois issu de forêts gérées durablement, certifié PEFC</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-euro-sign feature-icon"></i>
+                <h3>Prix Compétitifs</h3>
+                <p>Les meilleurs prix du marché sans compromis sur la qualité</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-fire feature-icon"></i>
+                <h3>Haute Performance</h3>
+                <p>Pouvoir calorifique supérieur pour un meilleur rendement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Ils Nous Font Confiance</h2>
+            <p>Découvrez ce que disent nos clients satisfaits</p>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">Satisfaction Client</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15K+</div>
+                <div class="stat-label">Clients Satisfaits</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Livraisons à Temps</div>
+            </div>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"J'ai commandé des granulés pour mon poêle et je suis très satisfait. Le bois est de très bonne qualité, la livraison a été rapide et le chauffeur très professionnel. Je recommande vivement !"</p>
+                    <div class="client">Marie L. - Bordeaux</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Service impeccable ! Les bûches de nuit tiennent vraiment toute la nuit. Plus besoin de se lever pour alimenter le feu. Le rapport qualité/prix est excellent. Merci Express Bois !"</p>
+                    <div class="client">Pierre D. - Lyon</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Commande passée en ligne, livraison le lendemain. Le bois est bien sec et facile à allumer. J'apprécie particulièrement la traçabilité du bois et l'engagement écologique de l'entreprise."</p>
+                    <div class="client">Sophie T. - Strasbourg</div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+        
+        <button class="review-btn" id="open-review">Laissez un avis</button>
+    </section>
+
+    <!-- Section Livraison France -->
+    <section style="background: linear-gradient(135deg, #5D4037, #3E2723); color: white; padding: 60px 5%; text-align: center;">
+        <div style="max-width: 900px; margin: auto;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">📦 Livraison dans toute la France 🇫🇷</h2>
+            <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 20px;">
+                Express Bois vous livre à domicile du <strong>bois de chauffage (chêne, hêtre, charme, frêne)</strong>, des <strong>granulés en sacs de 15 kg</strong>, des <strong>bûches compressées</strong>, et des <strong>poêles à bois performants</strong>, partout en France.
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 1.1rem;">
+                <li>✅ Bois ultra sec, prêt à brûler</li>
+                <li>✅ Accessoires de chauffage disponibles toute l’année</li>
+                <li>✅ Livraison rapide en 24 à 72h</li>
+                <li>✅ Commande simple et directe</li>
+            </ul>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                Livraisons express à <strong>Paris, Lyon, Marseille, Lille, Nantes, Strasbourg, Bordeaux, Toulouse, Grenoble, Reims</strong>… et dans toutes les villes de France !
+            </p>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <a href="https://www.expressbois.com" style="color: #FFD700; font-weight: 600; text-decoration: none;">
+                    🌐 www.expressbois.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact">
+        <div class="section-title">
+            <h2>Contactez-Nous</h2>
+            <p>Nous sommes à votre disposition pour toute question</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Notre Adresse</h3>
+                        <p>86 Boulevard FELIX FAURE 93300 , AUBERVILIERS - FRANCE</p>
+                        <p>SIRET : 800 790 677 00036</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Téléphone</h3>
+                        <p>+33 756-87-42-15</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>contact@expressbois.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock contact-icon"></i>
+                    <div class="contact-details">
+                        <h3>Horaires d'Ouverture</h3>
+                        <p>Lun-Ven: 8h-19h</p>
+                        <p>Sam: 9h-18h</p>
+                        <p>Dim: 10h-16h</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map">
+                Nous livrons partout en France
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Express Bois</h3>
+                <p>Votre fournisseur de bois de chauffage de qualité, livré partout en France. Confiez-nous votre confort hivernal.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Produits</h3>
+                <ul>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="details-granules-premium.html">Granulés de bois premium</a></li>
+                    <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
+                    <li><a href="details-bois-fendu.html">Bois fendu</a></li>
+                    <li><a href="details-bois-compresse.html">Bois compressé</a></li>
+                    <li><a href="index.html">Voir plus</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="cgv.html">Conditions Générales de Vente</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                    <li><a href="politique-remboursement.html">Politique de Remboursement</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Express Bois. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Menu fixe en bas -->
+    <nav class="bottom-nav">
+        <button class="nav-btn" onclick="scrollToSection('hero')">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('products')">
+            <i class="fas fa-tree"></i>
+            <span>Produits</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('why-us')">
+            <i class="fas fa-star"></i>
+            <span>Pourquoi nous</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('testimonials')">
+            <i class="fas fa-comments"></i>
+            <span>Témoignages</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('contact')">
+            <i class="fas fa-phone-alt"></i>
+            <span>Contact</span>
+        </button>
+    </nav>
+
+    <!-- Modal pour laisser un avis -->
+    <div class="modal" id="review-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-review">&times;</span>
+            <h3>Laissez votre avis</h3>
+            <div class="rating-input">
+                <i class="far fa-star" data-rating="1"></i>
+                <i class="far fa-star" data-rating="2"></i>
+                <i class="far fa-star" data-rating="3"></i>
+                <i class="far fa-star" data-rating="4"></i>
+                <i class="far fa-star" data-rating="5"></i>
+            </div>
+            <div class="form-group">
+                <label for="review-name">Votre pseudo</label>
+                <input type="text" id="review-name" placeholder="Votre nom ou pseudo">
+            </div>
+            <div class="form-group">
+                <label for="review-text">Votre témoignage</label>
+                <textarea id="review-text" placeholder="Dites-nous ce que vous avez pensé de nos produits et services..."></textarea>
+            </div>
+            <button class="submit-review" id="submit-review">Envoyer mon avis</button>
+        </div>
+    </div>
+
+    <!-- Modal pour vérifier la livraison -->
+    <div class="modal" id="delivery-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-delivery">&times;</span>
+            <h3>Vérifiez la livraison</h3>
+            <div class="form-group">
+                <label for="postal-code">Entrez votre code postal :</label>
+                <input type="text" id="postal-code" placeholder="Ex: 75001" maxlength="5">
+            </div>
+            <button class="submit-review" id="check-delivery">Vérifier</button>
+            <div id="delivery-result" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Modal pour calculer les besoins -->
+    <div class="modal" id="calculator-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-calculator">&times;</span>
+            <h3>Calculer vos besoins en bois</h3>
+            <div class="form-group">
+                <label for="surface">Surface à chauffer (m²) :</label>
+                <input type="number" id="surface" placeholder="Ex: 80">
+            </div>
+            <div class="form-group">
+                <label for="wood-type">Type de bois préféré :</label>
+                <select id="wood-type">
+                    <option value="granules-premium">Granulés Premium</option>
+                    <option value="granules-standard">Granulés Standard</option>
+                    <option value="buches-nuit" selected>Bûches de Nuit</option>
+                    <option value="buches-jour">Bûches de Jour</option>
+                    <option value="bois-fendu">Bois Fendu</option>
+                    <option value="briquettes">Briquettes Compressées</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="isolation">Qualité d'isolation :</label>
+                <select id="isolation">
+                    <option value="1">Mauvaise</option>
+                    <option value="0.8" selected>Moyenne</option>
+                    <option value="0.6">Bonne</option>
+                    <option value="0.4">Excellente</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="usage">Usage :</label>
+                <select id="usage">
+                    <option value="1" selected>Chauffage principal</option>
+                    <option value="0.7">Chauffage d'appoint</option>
+                    <option value="0.5">Chauffage occasionnel</option>
+                </select>
+            </div>
+            <button class="submit-review" id="calculate-needs">Calculer</button>
+            <div id="calculation-result" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-text"></span>
+    </div>
+
+    <script>
+        // Fonction de défilement pour le menu
+        function scrollToSection(sectionId) {
+            document.querySelector(`.${sectionId}`).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Modal d'avis
+        const reviewModal = document.getElementById('review-modal');
+        const openReviewBtn = document.getElementById('open-review');
+        const closeReviewBtn = document.getElementById('close-review');
+        
+        openReviewBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'flex';
+        });
+        
+        closeReviewBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'none';
+        });
+        
+        // Modal de livraison
+        const deliveryModal = document.getElementById('delivery-modal');
+        const openDeliveryBtn = document.getElementById('open-delivery');
+        const closeDeliveryBtn = document.getElementById('close-delivery');
+        
+        openDeliveryBtn.addEventListener('click', () => {
+            deliveryModal.style.display = 'flex';
+        });
+        
+        closeDeliveryBtn.addEventListener('click', () => {
+            deliveryModal.style.display = 'none';
+        });
+        
+        // Modal de calcul
+        const calculatorModal = document.getElementById('calculator-modal');
+        const openCalculatorBtn = document.getElementById('open-calculator');
+        const closeCalculatorBtn = document.getElementById('close-calculator');
+        
+        openCalculatorBtn.addEventListener('click', () => {
+            calculatorModal.style.display = 'flex';
+        });
+        
+        closeCalculatorBtn.addEventListener('click', () => {
+            calculatorModal.style.display = 'none';
+        });
+        
+        // Fermer les modals en cliquant à l'extérieur
+        window.addEventListener('click', (e) => {
+            if (e.target === reviewModal) {
+                reviewModal.style.display = 'none';
+            }
+            if (e.target === deliveryModal) {
+                deliveryModal.style.display = 'none';
+            }
+            if (e.target === calculatorModal) {
+                calculatorModal.style.display = 'none';
+            }
+        });
+
+        // Système d'étoiles pour les avis
+        const stars = document.querySelectorAll('.rating-input i');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.remove('far');
+                        s.classList.add('fas', 'active');
+                    } else {
+                        s.classList.remove('fas', 'active');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
+
+        // Carrousel de témoignages
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.slider-dot');
+        const slider = document.querySelector('.testimonials-slider');
+        
+        function showSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Mise à jour des points de navigation
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            currentSlide = index;
+        }
+        
+        // Navigation par points
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Rotation automatique du carrousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 5000);
+
+        // Vérification de la livraison
+        document.getElementById('check-delivery').addEventListener('click', function() {
+            const postalCode = document.getElementById('postal-code').value;
+            const resultDiv = document.getElementById('delivery-result');
+            
+            if (postalCode && /^\d{5}$/.test(postalCode)) {
+                // Simuler une vérification
+                const isAvailable = Math.random() > 0.2; // 80% de disponibilité
+                
+                if (isAvailable) {
+                    resultDiv.innerHTML = `<div style="color: #4CAF50; font-weight: 600;"><i class="fas fa-check-circle"></i> Livraison disponible à ${postalCode} !</div>
+                    <p style="margin-top: 10px;">Nous pouvons vous livrer sous 48h.</p>`;
+                } else {
+                    resultDiv.innerHTML = `<div style="color: #f44336; font-weight: 600;"><i class="fas fa-exclamation-circle"></i> Livraison non disponible pour ${postalCode}</div>
+                    <p style="margin-top: 10px;">Veuillez nous contacter pour plus d'informations.</p>`;
+                }
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = `<div style="color: #f44336; font-weight: 600;"><i class="fas fa-exclamation-circle"></i> Code postal invalide</div>
+                <p style="margin-top: 10px;">Veuillez entrer un code postal français à 5 chiffres.</p>`;
+                resultDiv.style.display = 'block';
+            }
+        });
+
+        // Calcul des besoins en bois
+        document.getElementById('calculate-needs').addEventListener('click', function() {
+            const surface = parseFloat(document.getElementById('surface').value);
+            const isolation = parseFloat(document.getElementById('isolation').value);
+            const usage = parseFloat(document.getElementById('usage').value);
+            const woodType = document.getElementById('wood-type').value;
+            const resultDiv = document.getElementById('calculation-result');
+            
+            if (surface && !isNaN(surface)) {
+                // Formule adaptée selon le type de bois
+                const besoinBase = Math.round(surface * 0.2 * isolation * usage);
+                
+                let recommendation = '';
+                let quantity = '';
+                let price = '';
+                
+                switch(woodType) {
+                    case 'granules-premium':
+                        quantity = `${Math.round(besoinBase * 1.2)} kg/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 1.2 * 0.49)}€/an`;
+                        recommendation = 'Granulés Premium - Rendement optimal, combustion propre';
+                        break;
+                    case 'granules-standard':
+                        quantity = `${Math.round(besoinBase * 1.5)} kg/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 1.5 * 0.31)}€/an`;
+                        recommendation = 'Granulés Standard - Bon rapport qualité-prix';
+                        break;
+                    case 'buches-nuit':
+                        quantity = `${Math.round(besoinBase * 0.8)} stères/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 0.8 * 89)}€/an`;
+                        recommendation = 'Bûches de Nuit - Combustion lente 8-10h';
+                        break;
+                    case 'buches-jour':
+                        quantity = `${Math.round(besoinBase * 1.1)} stères/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 1.1 * 82)}€/an`;
+                        recommendation = 'Bûches de Jour - Montée rapide en température';
+                        break;
+                    case 'bois-fendu':
+                        quantity = `${besoinBase} stères/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 79)}€/an`;
+                        recommendation = 'Bois Fendu - Mélange feuillus, polyvalent';
+                        break;
+                    case 'briquettes':
+                        quantity = `${Math.round(besoinBase * 0.9)} packs/an`;
+                        price = `Coût estimé : ${Math.round(besoinBase * 0.9 * 7.2)}€/an`;
+                        recommendation = 'Bois Compressé - Pratiques, combustion régulière';
+                        break;
+                }
+                
+                resultDiv.innerHTML = `<div style="color: #4CAF50; font-weight: 600;"><i class="fas fa-fire"></i> Vos besoins estimés</div>
+                <p style="margin-top: 15px;">Pour chauffer ${surface} m² avec ${recommendation} :</p>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <p><strong>Quantité recommandée :</strong> ${quantity}</p>
+                    <p><strong>${price}</strong></p>
+                </div>
+                <p style="font-size: 0.9em; color: #666;">Ces estimations sont indicatives et peuvent varier selon votre usage et la région.</p>`;
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = `<div style="color: #f44336; font-weight: 600;"><i class="fas fa-exclamation-circle"></i> Surface invalide</div>
+                <p style="margin-top: 10px;">Veuillez entrer une surface valide en m².</p>`;
+                resultDiv.style.display = 'block';
+            }
+        });
+
+        // Soumission d'avis
+        document.getElementById('submit-review').addEventListener('click', function() {
+            const name = document.getElementById('review-name').value;
+            const text = document.getElementById('review-text').value;
+            const stars = document.querySelectorAll('.rating-input i.fas').length;
+            
+            if (name && text && stars > 0) {
+                // Simulation d'envoi AJAX
+                setTimeout(() => {
+                    showNotification('Votre avis a été envoyé avec succès ! Merci pour votre retour.', 'success');
+                    reviewModal.style.display = 'none';
+                    
+                    // Réinitialiser le formulaire
+                    document.getElementById('review-name').value = '';
+                    document.getElementById('review-text').value = '';
+                    stars.forEach(star => {
+                        star.classList.remove('fas', 'active');
+                        star.classList.add('far');
+                    });
+                }, 1000);
+            } else {
+                showNotification('Veuillez remplir tous les champs et donner une note.', 'error');
+            }
+        });
+
+        // Fonction de notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+    
+    <script src="panier.js" defer></script>
+    <!-- Tidio Implementation-->
+<script src="//code.tidio.co/06zwvfsgg5rfdannzcu5opsxiwr2eudr.js" async></script>
+</body>
+</html>
