@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- ==========================================================================
+       1. MÉTA-DONNÉES SEO OPTIMISÉES
+       ========================================================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express Bois | Votre fournisseur de bois de chauffage en France</title>
+    <title>Bois de Chauffage de Qualité | Livraison France | Express Bois</title>
+    <meta name="description" content="Achetez votre bois de chauffage sec (chêne, hêtre), granulés et bûches compressées. Express Bois vous garantit une qualité H1 et une livraison rapide partout en France.">
+    <link rel="canonical" href="https://www.expressbois.com/index.html">
+
+    <!-- Dépendances (inchangées ) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="express_bois_logo.png">
     <link rel="stylesheet" href="style.css">
+    
     <!-- Google Tag Manager -->
     <script type="text/javascript"> adroll_adv_id = "WS7DWAY67FEX7ERZ4YUV77"; adroll_pix_id = "HOGYE7LZKFAEPLVE7ARBAQ"; adroll_version = "2.0";  (function(w, d, e, o, a) { w.__adroll_loaded = true; w.adroll = w.adroll || []; w.adroll.f = [ 'setProperties', 'identify', 'track', 'identify_email', 'get_cookie' ]; var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js"; for (a = 0; a < w.adroll.f.length; a++) { w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) { return function() { w.adroll.push([ n, arguments ]) } })(w.adroll.f[a]) }  e = d.createElement('script'); o = d.getElementsByTagName('script')[0]; e.async = 1; e.src = roundtripUrl; o.parentNode.insertBefore(e, o); })(window, document); adroll.track("pageView"); </script>
     <!-- End Google Tag Manager -->
+
+    <!-- ==========================================================================
+       2. MICRODONNÉES JSON-LD (TRÈS IMPORTANT POUR LE SEO)
+       ========================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Express Bois",
+      "url": "https://www.expressbois.com",
+      "logo": "https://www.expressbois.com/express_bois_logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+33-7-56-87-42-15",
+        "contactType": "Service Client",
+        "areaServed": "FR",
+        "availableLanguage": ["French"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "86 Boulevard FELIX FAURE",
+        "addressLocality": "AUBERVILIERS",
+        "postalCode": "93300",
+        "addressCountry": "FR"
+      },
+      "sameAs": [] // Ajoutez ici les URL de vos réseaux sociaux (Facebook, etc. )
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Express Bois",
+      "url": "https://www.expressbois.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.expressbois.com/recherche?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body>
-    <!-- ==========================================================================
-       Header avec le lien vers la page panier
-       ========================================================================== -->
+    <!-- Header (inchangé ) -->
     <header>
         <div class="logo">
             <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
@@ -31,261 +78,304 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Votre confort, notre priorité</h2>
-        <p>Bois de chauffage de qualité supérieure, livré directement chez vous partout en France</p>
-        <div class="hero-buttons">
-            <button class="btn btn-primary" id="open-delivery">Vérifiez la livraison</button>
-            <button class="btn btn-secondary" id="open-calculator">Calculer mes besoins</button>
-        </div>
-    </section>
+    <!-- ==========================================================================
+       3. SÉMANTIQUE HTML RENFORCÉE
+       ========================================================================== -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title" class="visually-hidden">Express Bois - Vente de Bois de Chauffage en France</h1>
+            <h2 class="hero-main-title">Votre confort, notre priorité</h2>
+            <p>Bois de chauffage de qualité supérieure, livré directement chez vous partout en France</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="open-delivery">Vérifiez la livraison</button>
+                <button class="btn btn-secondary" id="open-calculator">Calculer mes besoins</button>
+            </div>
+        </section>
 
-    <!-- Section Produits -->
-    <section class="products">
-        <div class="section-title">
-            <h2>Nos Produits</h2>
-            <p>Découvrez notre gamme complète de bois de chauffage</p>
-        </div>
-        <div class="products-container">
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/granulés/granulés.png');"></div>
-                <div class="product-info">
-                    <h3>Granulés de Bois Premium</h3>
-                    <p>100% résineux français, certification ENplus A1, faible taux de cendres (<0,5%).</p>
-                    <div class="product-price">5,50€ / sac 15kg</div>
-                    <a href="details-granules-premium.html" class="btn-details">Voir détails</a>
-                </div>
+        <!-- Section Produits -->
+        <section id="products" class="products" aria-labelledby="products-title">
+            <div class="section-title">
+                <h2 id="products-title">Nos Produits de Chauffage</h2>
+                <p>Découvrez notre gamme complète de bois de chauffage sec et certifié</p>
             </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/buche\ de\ nuit/buche_de_nuit.jfif');"></div>
-                <div class="product-info">
-                    <h3>Bûches de Nuit - Chêne/Hêtre</h3>
-                    <p>Combustion lente 8-10h, bois dur séché 18 mois, idéal pour chauffage nocturne.</p>
-                    <div class="product-price">85€ / stère</div>
-                    <a href="details-buches-nuit.html" class="btn-details">Voir détails</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/bois\ fendu/bois_fendu_4.jpg');"></div>
-                <div class="product-info">
-                    <h3>Bois Fendu - Mélange Feuillus</h3>
-                    <p>Chêne, Hêtre, Frêne et Charme. Séché naturellement 18 mois, prêt à l'emploi.</p>
-                    <div class="product-price">77€ / stère</div>
-                    <a href="details-bois-fendu.html" class="btn-details">Voir détails</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/bois_densifié/bois-densifié.webp');"></div>
-                <div class="product-info">
-                    <h3>Bois Compressé</h3>
-                    <p>100% sciure de feuillus compressée, haute densité énergétique, combustion 2-3h par bûche.</p>
-                    <div class="product-price">7,50€ / pack 10 bûches</div>
-                    <a href="details-bois-compresse.html" class="btn-details">Voir détails</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/buche\ de\ jour/buche_de_jour_2.png');"></div>
-                <div class="product-info">
-                    <h3>Bûches de Jour - Hêtre/Frêne</h3>
-                    <p>Combustion rapide et intense, montée en température rapide, bois G1.</p>
-                    <div class="product-price">78€ / stère</div>
-                    <a href="details-buches-jour.html" class="btn-details">Voir détails</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/buche\ de\ nuit/buche_de_nuit_1.png');"></div>
-                <div class="product-info">
-                    <h3>Bûches de Nuit - Charme</h3>
-                    <p>Charme pur, combustion ultra-lente 10-12h, bois dur premium pour chauffage nocturne prolongé.</p>
-                    <div class="product-price">82€ / stère</div>
-                    <a href="details-buches-nuit-charme.html" class="btn-details">Voir détails</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img" style="background-image: url('images/buche\ de\ jour/buche_jour_chene_charme.jfif');"></div>
-                <div class="product-info">
-                    <h3>Bûches de Jour - Chêne/Charme</h3>
-                    <p>Mélange chêne et charme, montée rapide en température, combustion intense et durable.</p>
-                    <div class="product-price">76€ / stère</div>
-                    <a href="details-buches-jour-chene-charme.html" class="btn-details">Voir détails</a>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="products-container">
+                <!-- Chaque product-card est maintenant un <article> pour la sémantique -->
+                <article class="product-card" data-product-id="granules-premium" data-product-name="Granulés de Bois Premium" data-product-price="5.50" data-product-image="images/granulés/granulés.png" data-product-unit="sac 15kg">
+                    <div class="product-img" style="background-image: url('images/granulés/granulés.png');" role="img" aria-label="Sacs de granulés de bois premium empilés"></div>
+                    <div class="product-info"><h3>Granulés de Bois Premium</h3><p>100% résineux français, certification ENplus A1, faible taux de cendres (<0,5%).</p><div class="product-price">5,50€ / sac 15kg</div><a href="details-granules-premium.html" class="btn-details">Voir détails</a></div>
+                </article>
+                <article class="product-card" data-product-id="buches-nuit-chene-hetre" data-product-name="Bûches de Nuit - Chêne/Hêtre" data-product-price="85" data-product-image="images/buche de nuit/buche_de_nuit.jfif" data-product-unit="stère">
+                    <div class="product-img" style="background-image: url('images/buche de nuit/buche_de_nuit.jfif');" role="img" aria-label="Pile de bûches de nuit en chêne et hêtre"></div>
+                    <div class="product-info"><h3>Bûches de Nuit - Chêne/Hêtre</h3><p>Combustion lente 8-10h, bois dur séché 18 mois, idéal pour chauffage nocturne.</p><div class="product-price">85€ / stère</div><a href="details-buches-nuit.html" class="btn-details">Voir détails</a></div>
+                </article>
+                <article class="product-card" data-product-id="bois-fendu-melange" data-product-name="Bois Fendu - Mélange Feuillus" data-product-price="77" data-product-image="images/bois fendu/bois_fendu_4.jpg" data-product-unit="stère">
+                    <div class="product-img" style="background-image: url('images/bois fendu/bois_fendu_4.jpg');" role="img" aria-label="Stère de bois fendu en mélange de feuillus"></div>
+                    <div class="product-info"><h3>Bois Fendu - Mélange Feuillus</h3><p>Chêne, Hêtre, Frêne et Charme. Séché naturellement 18 mois, prêt à l'emploi.</p><div class="product-price">77€ / stère</div><a href="details-bois-fendu.html" class="btn-details">Voir détails</a></div>
+                </article>
+                <article class="product-card" data-product-id="bois-compresse" data-product-name="Bois Compressé" data-product-price="7.50" data-product-image="images/bois_densifié/bois-densifié.webp" data-product-unit="pack 10 bûches">
+                    <div class="product-img" style="background-image: url('images/bois_densifié/bois-densifié.webp');" role="img" aria-label="Pack de bûches de bois compressé"></div>
+                    <div class="product-info"><h3>Bois Compressé</h3><p>100% sciure de feuillus compressée, haute densité énergétique, combustion 2-3h par bûche.</p><div class="product-price">7,50€ / pack 10 bûches</div><a href="details-bois-compresse.html" class="btn-details">Voir détails</a></div>
+                </article>
+                <!--
+                <article class="product-card" data-product-id="buches-jour-hetre-frene" data-product-name="Bûches de Jour - Hêtre/Frêne" data-product-price="78" data-product-image="images/buche de jour/buche_de_jour_2.png" data-product-unit="stère">
+                    <div class="product-img" style="background-image: url('images/buche de jour/buche_de_jour_2.png');" role="img" aria-label="Stère de bûches de jour en hêtre et frêne"></div>
+                    <div class="product-info"><h3>Bûches de Jour - Hêtre/Frêne</h3><p>Combustion rapide et intense, montée en température rapide, bois G1.</p><div class="product-price">78€ / stère</div><a href="details-buches-jour.html" class="btn-details">Voir détails</a></div>
+                </article>
+                <article class="product-card" data-product-id="buches-nuit-charme" data-product-name="Bûches de Nuit - Charme" data-product-price="82" data-product-image="images/buche de nuit/buche_de_nuit_1.png" data-product-unit="stère">
+                    <div class="product-img" style="background-image: url('images/buche de nuit/buche_de_nuit_1.png');" role="img" aria-label="Stère de bûches de nuit en charme pur"></div>
+                    <div class="product-info"><h3>Bûches de Nuit - Charme</h3><p>Charme pur, combustion ultra-lente 10-12h, bois dur premium pour chauffage nocturne prolongé.</p><div class="product-price">82€ / stère</div><a href="details-buches-nuit-charme.html" class="btn-details">Voir détails</a></div>
+                </article>
+                <article class="product-card" data-product-id="buches-jour-chene-charme" data-product-name="Bûches de Jour - Chêne/Charme" data-product-price="76" data-product-image="images/buche de jour/buche_jour_chene_charme.jfif" data-product-unit="stère">
+                    <div class="product-img" style="background-image: url('images/buche de jour/buche_jour_chene_charme.jfif');" role="img" aria-label="Stère de bûches de jour en chêne et charme"></div>
+                    <div class="product-info"><h3>Bûches de Jour - Chêne/Charme</h3><p>Mélange chêne et charme, montée rapide en température, combustion intense et durable.</p><div class="product-price">76€ / stère</div><a href="details-buches-jour-chene-charme.html" class="btn-details">Voir détails</a></div>
+                </article>
+                -->
 
-    <!-- Section Accessoires -->
-    <section style="background:#EFEBE9 url('images/accessoires/accessoire.png') center/cover no-repeat;padding:80px 5%;text-align:center;color:#fff">
-    <div style="max-width:700px;margin:auto;background:rgba(62,39,35,.75);border-radius:15px;padding:40px 30px">
-    <h2 style="font-size:2.2rem;margin-bottom:15px; color: white">Accessoires</h2>
-    <p style="font-size:1.1rem;margin-bottom:25px">Optez pour des équipements de qualité pour votre confort et votre autonomie.</p>
-    <a href="accessoires.html" style="background:#E64A19;color:#fff;padding:14px 35px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-block;transition:.3s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">Découvrir le catalogue</a>
-    </div>
-    </section>
+                <a href="catalogue.html#bois-de-chauffage" style="background:#5D4037;color:#fff;padding:14px 35px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-block;transition:.3s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">Voir tous nos bois</a>
+            </div>
+        </section>
 
-    <!-- Section Pourquoi Nous Choisir -->
-    <section class="why-us">
-        <div class="section-title">
-            <h2>Pourquoi Nous Choisir</h2>
-            <p>L'excellence du service et la qualité du produit</p>
-        </div>
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-truck feature-icon"></i>
-                <h3>Livraison Rapide</h3>
-                <p>Livraison sous 48h partout en France par nos transporteurs partenaires</p>
+        <!-- Nos Combos & Packs -->
+        <section class="combos-section" aria-labelledby="combos-title">
+            <div class="section-title">
+                <h2 id="combos-title">Nos Combos & Packs Exclusifs</h2>
+                <p>Profitez de nos offres groupées pour un hiver tout confort, au meilleur prix.</p>
             </div>
-            <div class="feature">
-                <i class="fas fa-tree feature-icon"></i>
-                <h3>Bois Durable</h3>
-                <p>Bois issu de forêts gérées durablement, certifié PEFC</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-euro-sign feature-icon"></i>
-                <h3>Prix Compétitifs</h3>
-                <p>Les meilleurs prix du marché sans compromis sur la qualité</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-fire feature-icon"></i>
-                <h3>Haute Performance</h3>
-                <p>Pouvoir calorifique supérieur pour un meilleur rendement</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section Témoignages -->
-    <section class="testimonials">
-        <div class="section-title">
-            <h2>Ils Nous Font Confiance</h2>
-            <p>Découvrez ce que disent nos clients satisfaits</p>
-        </div>
-        
-        <div class="stats-container">
-            <div class="stat">
-                <div class="stat-number">4.9/5</div>
-                <div class="stat-label">Satisfaction Client</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">15K+</div>
-                <div class="stat-label">Clients Satisfaits</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Livraisons à Temps</div>
-            </div>
-        </div>
-        
-        <div class="testimonials-container">
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            <div class="combos-container">
+                <!-- Combo 1 : Pack Démarrage Saison -->
+                <article class="combo-card">
+                    <div class="combo-header">
+                        <i class="fas fa-rocket combo-icon"></i>
+                        <h3 class="combo-title">Pack 1</h3>
                     </div>
-                    <p>"J'ai commandé des granulés pour mon poêle et je suis très satisfait. Le bois est de très bonne qualité, la livraison a été rapide et le chauffeur très professionnel. Je recommande vivement !"</p>
-                    <div class="client">Marie L. - Bordeaux</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="combo-content">
+                        <!--
+                        <p class="combo-description">
+                            Idéal pour commencer la saison de chauffe. Un mélange parfait pour une chaleur rapide et une combustion qui dure.
+                        </p>
+                        -->
+                        <ul class="combo-items">
+                            <li><i class="fas fa-check"></i> 3 Stère de Bûches de Jour </li>
+                            <li><i class="fas fa-check"></i> 3 Stère de Bûches de Nuit </li>
+                            <li><i class="fas fa-check"></i> 1 Sac d'allume-feu offert</li>
+                        </ul>
                     </div>
-                    <p>"Service impeccable ! Les bûches de nuit tiennent vraiment toute la nuit. Plus besoin de se lever pour alimenter le feu. Le rapport qualité/prix est excellent. Merci Express Bois !"</p>
-                    <div class="client">Pierre D. - Lyon</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                    <div class="combo-footer">
+                        <div class="combo-price">
+                            <span class="current-price">400€</span>
+                            <span class="old-price">489€</span>
+                        </div>
                     </div>
-                    <p>"Commande passée en ligne, livraison le lendemain. Le bois est bien sec et facile à allumer. J'apprécie particulièrement la traçabilité du bois et l'engagement écologique de l'entreprise."</p>
-                    <div class="client">Sophie T. - Strasbourg</div>
-                </div>
+                </article>
+
+                <!-- Combo 2 : Pack Performance & Autonomie -->
+                <article class="combo-card">
+                    <div class="combo-header">
+                        <i class="fas fa-shield-alt combo-icon"></i>
+                        <h3 class="combo-title">Pack 2</h3>
+                    </div>
+                    <div class="combo-content">
+                        <!--
+                        <p class="combo-description">
+                            La solution complète pour un chauffage performant et économique tout l'hiver, alliant la puissance des bûches et la praticité des granulés.
+                        </p>
+                        -->
+                        <ul class="combo-items">
+                            <li><i class="fas fa-check"></i> 5 Stères de Bois Fendu (Mélange)</li>
+                            <li><i class="fas fa-check"></i> 10 Sacs de Granulés Premium</li>
+                            <li><i class="fas fa-check"></i> Livraison prioritaire incluse</li>
+                        </ul>
+                    </div>
+                    <div class="combo-footer">
+                        <div class="combo-price">
+                            <span class="current-price">370€</span>
+                            <span class="old-price">440€</span>
+                        </div>
+                    </div>
+                </article>
             </div>
-            <div class="slider-nav">
-                <div class="slider-dot active"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
+
+            <!-- Bouton "Voir plus" -->
+            <div class="see-more-combos">
+                <a href="catalogue.html#packs" class="btn btn-secondary">Voir tous nos packs</a>
             </div>
+        </section>
+
+        <!-- Section Accessoires -->
+        <section style="background:#EFEBE9 url('images/accessoires/accessoire.png') center/cover no-repeat;padding:80px 5%;text-align:center;color:#fff">
+        <div style="max-width:700px;margin:auto;background:rgba(62,39,35,.75);border-radius:15px;padding:40px 30px">
+        <h2 style="font-size:2.2rem;margin-bottom:15px; color: white">Accessoires</h2>
+        <p style="font-size:1.1rem;margin-bottom:25px">Optez pour des équipements de qualité pour votre confort et votre autonomie.</p>
+        <a href="accessoires.html" style="background:#E64A19;color:#fff;padding:14px 35px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-block;transition:.3s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">Découvrir le catalogue</a>
         </div>
+        </section>
+
+        <!-- Section Pourquoi Nous Choisir -->
+        <section class="why-us" aria-labelledby="why-us-title">
+            <div class="section-title">
+                <h2 id="why-us-title">Pourquoi Choisir Express Bois ?</h2>
+                <p>L'excellence du service et la qualité du produit, au meilleur prix.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-truck feature-icon"></i>
+                    <h3>Livraison Rapide</h3>
+                    <p>Livraison sous 48h partout en France par nos transporteurs partenaires</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tree feature-icon"></i>
+                    <h3>Bois Durable</h3>
+                    <p>Bois issu de forêts gérées durablement, certifié PEFC</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-euro-sign feature-icon"></i>
+                    <h3>Prix Compétitifs</h3>
+                    <p>Les meilleurs prix du marché sans compromis sur la qualité</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-fire feature-icon"></i>
+                    <h3>Haute Performance</h3>
+                    <p>Pouvoir calorifique supérieur pour un meilleur rendement</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section class="testimonials" aria-labelledby="testimonials-title">
+            <div class="section-title">
+                <h2 id="testimonials-title">Ils Nous Font Confiance</h2>
+                <p>Découvrez ce que disent nos clients satisfaits</p>
+            </div>
         
-        <button class="review-btn" id="open-review">Laissez un avis</button>
-    </section>
-
-    <!-- Section Livraison France -->
-    <section style="background: linear-gradient(135deg, #5D4037, #3E2723); color: white; padding: 60px 5%; text-align: center;">
-        <div style="max-width: 900px; margin: auto;">
-            <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">📦 Livraison dans toute la France 🇫🇷</h2>
-            <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 20px;">
-                Express Bois vous livre à domicile du <strong>bois de chauffage (chêne, hêtre, charme, frêne)</strong>, des <strong>granulés en sacs de 15 kg</strong>, des <strong>bûches compressées</strong>, et des <strong>poêles à bois performants</strong>, partout en France.
-            </p>
-            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 1.1rem;">
-                <li>✅ Bois ultra sec, prêt à brûler</li>
-                <li>✅ Accessoires de chauffage disponibles toute l’année</li>
-                <li>✅ Livraison rapide en 24 à 72h</li>
-                <li>✅ Commande simple et directe</li>
-            </ul>
-            <p style="font-size: 1.1rem; margin-bottom: 30px;">
-                Livraisons express à <strong>Paris, Lyon, Marseille, Lille, Nantes, Strasbourg, Bordeaux, Toulouse, Grenoble, Reims</strong>… et dans toutes les villes de France !
-            </p>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <a href="https://www.expressbois.com" style="color: #FFD700; font-weight: 600; text-decoration: none;">
-                    🌐 www.expressbois.com
-                </a>
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Satisfaction Client</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Clients Satisfaits</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Livraisons à Temps</div>
+                </div>
             </div>
-        </div>
-    </section>
+            
+            <div class="testimonials-container">
+                <div class="testimonials-slider">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"J'ai commandé des granulés pour mon poêle et je suis très satisfait. Le bois est de très bonne qualité, la livraison a été rapide et le chauffeur très professionnel. Je recommande vivement !"</p>
+                        <div class="client">Marie L. - Bordeaux</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Service impeccable ! Les bûches de nuit tiennent vraiment toute la nuit. Plus besoin de se lever pour alimenter le feu. Le rapport qualité/prix est excellent. Merci Express Bois !"</p>
+                        <div class="client">Pierre D. - Lyon</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"Commande passée en ligne, livraison le lendemain. Le bois est bien sec et facile à allumer. J'apprécie particulièrement la traçabilité du bois et l'engagement écologique de l'entreprise."</p>
+                        <div class="client">Sophie T. - Strasbourg</div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+            
+            <button class="review-btn" id="open-review">Laissez un avis</button>
+        </section>
 
-    <!-- Section Contact -->
-    <section class="contact">
-        <div class="section-title">
-            <h2>Contactez-Nous</h2>
-            <p>Nous sommes à votre disposition pour toute question</p>
-        </div>
-        <div class="contact-container">
+        <!-- Section Livraison France -->
+        <section style="background: linear-gradient(135deg, #5D4037, #3E2723); color: white; padding: 60px 5%; text-align: center;">
+            <div style="max-width: 900px; margin: auto;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">📦 Livraison dans toute la France 🇫🇷</h2>
+                <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 20px;">
+                    Express Bois vous livre à domicile du <strong>bois de chauffage (chêne, hêtre, charme, frêne)</strong>, des <strong>granulés en sacs de 15 kg</strong>, des <strong>bûches compressées</strong>, et des <strong>poêles à bois performants</strong>, partout en France.
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 1.1rem;">
+                    <li>✅ Bois ultra sec, prêt à brûler</li>
+                    <li>✅ Accessoires de chauffage disponibles toute l’année</li>
+                    <li>✅ Livraison rapide en 24 à 72h</li>
+                    <li>✅ Commande simple et directe</li>
+                </ul>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                    Livraisons express à <strong>Paris, Lyon, Marseille, Lille, Nantes, Strasbourg, Bordeaux, Toulouse, Grenoble, Reims</strong>… et dans toutes les villes de France !
+                </p>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                    <a href="https://www.expressbois.com" style="color: #FFD700; font-weight: 600; text-decoration: none;">
+                        🌐 www.expressbois.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section class="contact" aria-labelledby="contact-title">
+            <div class="section-title">
+                <h2 id="contact-title">Contactez-Nous</h2>
+                <p>Nous sommes à votre disposition pour toute question</p>
+            </div>
+            <div class="contact-container">
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt contact-icon"></i>
@@ -323,7 +413,8 @@
                 Nous livrons partout en France
             </div>
         </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -340,7 +431,6 @@
                     <li><a href="details-buches-nuit.html">Bûches de nuit</a></li>
                     <li><a href="details-bois-fendu.html">Bois fendu</a></li>
                     <li><a href="details-bois-compresse.html">Bois compressé</a></li>
-                    <li><a href="index.html">Voir plus</a></li>
                 </ul>
             </div>
             <div class="footer-column">
