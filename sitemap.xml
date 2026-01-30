@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page d'Accueil (Priorité la plus haute ) -->
+  <url>
+    <loc>https://www.expressbois.com/index.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Landing Page SEO (Priorité très haute ) -->
+  <url>
+    <loc>https://www.expressbois.com/express-bois.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Page Catalogue (Priorité haute ) -->
+  <url>
+    <loc>https://www.expressbois.com/catalogue.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Pages Produits (Priorité haute ) -->
+  <url><loc>https://www.expressbois.com/details-granules-premium.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.expressbois.com/details-buches-nuit.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.expressbois.com/details-bois-fendu.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.expressbois.com/details-bois-compresse.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.expressbois.com/details-buches-jour.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.expressbois.com/details-buches-nuit-charme.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.expressbois.com/details-buches-jour-chene-charme.html</loc><lastmod>2026-01-30</lastmod><priority>0.8</priority></url>
+  
+  <!-- Page Accessoires -->
+  <url>
+    <loc>https://www.expressbois.com/accessoires.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Pages de contenu (Priorité moyenne ) -->
+  <url>
+    <loc>https://www.expressbois.com/faq.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.expressbois.com/cgv.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

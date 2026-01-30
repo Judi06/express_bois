@@ -1,0 +1,14 @@
+# Fichier robots.txt pour Express Bois
+# Ce fichier indique aux robots des moteurs de recherche les règles d'exploration du site.
+
+# Autoriser tous les robots à explorer le site
+User-agent: *
+Disallow:
+
+# Interdire l'exploration de la page de confirmation de commande
+# C'est une page de remerciement qui n'a pas de valeur SEO et ne doit pas apparaître dans les résultats de recherche.
+Disallow: /confirmation.html
+
+# Indiquer l'emplacement du sitemap (plan du site)
+# C'est une aide précieuse pour que Google découvre toutes vos pages importantes.
+Sitemap: https://www.expressbois.com/sitemap.xml
